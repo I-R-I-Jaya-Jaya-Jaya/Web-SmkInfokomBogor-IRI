@@ -600,7 +600,7 @@
                     <img src="IMG/home/logo/ipb-university.jpg" alt="Logo IPB University">
 
                     <div>
-                      <h4>IPB University</h4> 
+                      <h4>IPB University</h4>   
                       <p>Ilmu Komputer &amp; Sekolah Vokasi</p>
                     </div>
                   </div>
