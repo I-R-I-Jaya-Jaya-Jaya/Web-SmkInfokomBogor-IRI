@@ -37,3 +37,8 @@ Route::get('/kontak', function () {
 Route::get('/ppdb', function () {
     return view('frontend.ppdb');
 })->name('ppdb');
+
+
+Route::get('/fasilitas', function () {
+    return view('frontend.fasilitas');
+})->name('fasilitas');

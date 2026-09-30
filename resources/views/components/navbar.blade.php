@@ -107,6 +107,15 @@
                 </a>
             </li>
 
+              <li>
+                <a
+                    href="{{ route('fasilitas') }}"
+                    class="navlink {{ request()->routeIs('fasilitas') ? 'is-active' : '' }}"
+                >
+                    Fasilitas
+                </a>
+            </li>
+
             <li>
                 <a
                     href="{{ route('bkk') }}"
