@@ -7,7 +7,7 @@
 
             <a href="tel:{{ $kontak['kontak_telepon'] ?? '02518328999' }}">
                 <img
-                    src="{{ asset('IMG/phone-icon.svg') }}"
+                    src="{{ asset('IMG/home/phone-icon.svg') }}"
                     alt="Telepon"
                 >
                 <span>
@@ -21,7 +21,7 @@
                 href="mailto:{{ $kontak['kontak_email'] ?? 'info@smkinfokom.sch.id' }}"
             >
                 <img
-                    src="{{ asset('IMG/email-icon.svg') }}"
+                    src="{{ asset('IMG/home/email-icon.svg') }}"
                     alt="Email"
                 >
                 <span>
@@ -59,7 +59,7 @@
 
             <span class="logo-box">
                 <img
-                    src="{{ asset('IMG/logo-infokom.svg') }}"
+                    src="{{ asset('IMG/home/logo-infokom.svg') }}"
                     alt="Logo SMK INFOKOM"
                 >
             </span>

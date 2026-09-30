@@ -7,7 +7,7 @@
             <a href="{{ route('home') }}" class="footer-brand">
                 <span class="footer-logo">
                     <img
-                        src="{{ asset('IMG/logo-infokom.svg') }}"
+                        src="{{ asset('IMG/home/logo-infokom.svg') }}"
                         alt="Logo SMK INFOKOM"
                     >
                 </span>
@@ -26,7 +26,7 @@
 
             <p class="footer-accreditation">
                 <img
-                    src="{{ asset('IMG/terakreditasi-icon.svg') }}"
+                    src="{{ asset('IMG/home/terakreditasi-icon.svg') }}"
                     alt="Akreditasi A"
                     class="footer-accreditation-icon"
                 >
@@ -119,7 +119,7 @@
                 <!-- Telepon -->
                 <li>
                     <img
-                        src="{{ asset('IMG/phone-icon.svg') }}"
+                        src="{{ asset('IMG/home/phone-icon.svg') }}"
                         alt="Telepon"
                         class="footer-contact-icon"
                     >
@@ -131,7 +131,7 @@
                 <!-- Email -->
                 <li>
                     <img
-                        src="{{ asset('IMG/email-icon.svg') }}"
+                        src="{{ asset('IMG/home/email-icon.svg') }}"
                         alt="Email"
                         class="footer-contact-icon"
                     >
