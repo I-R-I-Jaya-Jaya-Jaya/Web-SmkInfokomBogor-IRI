@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('title', 'Fasilitas Kampus - SMK INFOKOM BOGOR')
-@section('description', 'Fasilitas SMK INFOKOM Kota Bogor: laboratorium TKJ, RPL, DKV, dan PSPT, ruang kelas, perpustakaan, mushola, kantin, dan lapangan.')
+@section('description', 'Fasilitas SMK INFOKOM Kota Bogor: laboratorium TKJ, RPL, DKV, dan PSPT, ruang kelas,
+perpustakaan, mushola, kantin, dan lapangan.')
 
 @section('page', 'fasilitas')
 
@@ -18,8 +19,8 @@
             <div class="fas-hero__main">
                 <div>
                     <h1 id="hero-title" class="fas-hero__title">
-                        Sarana Belajar Pencetak<br>
-                        <span>Talenta Digital Siap Kerja</span>
+                        Fasilitas Lengkap<br>
+                        Pencetak Talenta Digital Siap Kerja
                     </h1>
                     <p class="fas-hero__desc">
                         Dari laboratorium empat program keahlian, ruang belajar, perpustakaan, mushola, hingga
@@ -31,7 +32,7 @@
         </div>
     </section>
 
-
+    <!-- 
     <section class="fas-filter" aria-label="Filter fasilitas">
         <div class="shell">
             <div class="fas-filter__tabs" role="tablist" aria-label="Kategori fasilitas">
@@ -51,7 +52,7 @@
                     tabindex="-1">Olahraga <span class="fas-tab__count">1</span></button>
             </div>
         </div>
-    </section>
+    </section> -->
 
 
     <section id="katalog" class="fas-catalog" aria-labelledby="katalog-title">
@@ -65,7 +66,8 @@
                     <h2 id="katalog-title" class="fas-section-title">Katalog Ruang Praktik &amp; Fasilitas</h2>
                 </div>
                 <p class="fas-section-lead">
-                    Laboratorium empat program keahlian, ruang belajar, dan fasilitas penunjang di kampus seluas
+                    Laboratorium empat program keahlian, ruang belajar, dan fasilitas penunjang di Sekolah SMK Infokom
+                    seluas
                     2.600 m², Jl. Letjen Ibrahim Adjie No. 178, Sindangbarang, Bogor.
                 </p>
             </div>
@@ -106,7 +108,8 @@
                     <div class="fas-card__body">
                         <h3 class="fas-card__title">Lab Teknik Komputer dan Jaringan</h3>
                         <p class="fas-card__desc">Tempat siswa TKJ berlatih merakit dan memperbaiki komputer,
-                            mengonfigurasi jaringan LAN dan WAN, serta mempelajari MikroTik, Cisco, dan server Linux.</p>
+                            mengonfigurasi jaringan LAN dan WAN, serta mempelajari MikroTik, Cisco, dan server Linux.
+                        </p>
                         <div class="fas-card__foot">
                             <p class="fas-card__meta">Jurusan: <strong>TKJ</strong></p>
                             <span class="fas-card__link">MikroTik Pembelajaran <img class="fas-icon"
@@ -184,8 +187,7 @@
                         <img class="fas-card__img" src="{{ asset('IMG/fasilitas/component/perpustakaan.jpg') }}"
                             alt="Perpustakaan" loading="lazy" data-fallback>
                         <span class="fas-card__cat"><img class="fas-icon"
-                                src="{{ asset('IMG/fasilitas/icon/perpustakaan.svg') }}"
-                                alt="">Perpustakaan</span>
+                                src="{{ asset('IMG/fasilitas/icon/perpustakaan.svg') }}" alt="">Perpustakaan</span>
                         <span class="fas-card__tag">Pusat Literasi</span>
                     </div>
                     <div class="fas-card__body">
@@ -334,8 +336,8 @@
                             Laboratorium: TKJ, RPL, DKV, dan PSPT</li>
                         <li><img class="fas-icon" src="{{ asset('IMG/fasilitas/icon/check.svg') }}" alt="">Praktik
                             langsung di laboratorium jurusan</li>
-                        <li><img class="fas-icon" src="{{ asset('IMG/fasilitas/icon/check.svg') }}"
-                                alt="">Pembelajaran berstandar nasional</li>
+                        <li><img class="fas-icon" src="{{ asset('IMG/fasilitas/icon/check.svg') }}" alt="">Pembelajaran
+                            berstandar nasional</li>
                     </ul>
                 </article>
 
@@ -350,8 +352,8 @@
                             sekolah</li>
                         <li><img class="fas-icon" src="{{ asset('IMG/fasilitas/icon/check.svg') }}" alt="">Ujian
                             berbasis komputer (CBT)</li>
-                        <li><img class="fas-icon" src="{{ asset('IMG/fasilitas/icon/check.svg') }}"
-                                alt="">School Management Mutu (SMS)</li>
+                        <li><img class="fas-icon" src="{{ asset('IMG/fasilitas/icon/check.svg') }}" alt="">School
+                            Management Mutu (SMS)</li>
                     </ul>
                 </article>
 
@@ -366,8 +368,8 @@
                             Kerja Lapangan (PKL)</li>
                         <li><img class="fas-icon" src="{{ asset('IMG/fasilitas/icon/check.svg') }}" alt="">Bursa
                             Kerja Khusus (BKK)</li>
-                        <li><img class="fas-icon" src="{{ asset('IMG/fasilitas/icon/check.svg') }}"
-                                alt="">Kemitraan industri &amp; tracer study</li>
+                        <li><img class="fas-icon" src="{{ asset('IMG/fasilitas/icon/check.svg') }}" alt="">Kemitraan
+                            industri &amp; tracer study</li>
                     </ul>
                 </article>
             </div>

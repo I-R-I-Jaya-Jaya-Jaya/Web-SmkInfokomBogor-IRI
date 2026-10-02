@@ -127,123 +127,122 @@ Profil SMK INFOKOM Kota Bogor sebagai sekolah menengah kejuruan pusat keunggulan
 
 
   <!-- ==================== VISI & MISI ==================== -->
-  <section class="visi-section">
-    <div class="profil-container">
+<section id="visi-misi" class="visi-section">
+  <div class="profil-container">
 
-      <div class="section-heading">
+    <div class="section-heading">
 
-        <p class="program-eyebrow">
-          <span></span>
-          ARAH LANGKAH STRATEGIS
+      <p class="program-eyebrow">
+        <span></span>
+        ARAH LANGKAH STRATEGIS
+      </p>
+
+      <h2>
+        Visi &amp; Misi Institusi
+      </h2>
+
+      <p>
+        Pilar komitmen fundamental SMK INFOKOM dalam membentuk ekosistem
+        pendidikan berkarakter dan berorientasi teknologi.
+      </p>
+
+    </div>
+
+
+    <div class="visi-grid">
+
+      <!-- VISI -->
+      <div class="visi-card">
+
+        <div class="visi-icon">
+          <img src="IMG/profil/icon/vision.svg" alt="">
+        </div>
+
+        <p class="visi-small">
+          VISI KAMI
         </p>
 
-        <h2>
-          Visi &amp; Misi Institusi
-        </h2>
+        <h3>
+          "Menjadi Sekolah Menengah
+          Kejuruan Berbasis Teknologi
+          Informasi Terdepan di Indonesia yang
+          Menghasilkan Lulusan Berakhlak
+          Mulia, Kompeten Standar Global,
+          dan Siap Memimpin Inovasi Industri."
+        </h3>
 
-        <p>
-          Pilar komitmen fundamental SMK INFOKOM dalam membentuk ekosistem
-          pendidikan berkarakter dan berorientasi teknologi.
-        </p>
+        <span class="visi-year">
+          <img src="IMG/profil/icon/bendera.svg" alt="">
+          Target Strategis Pendidikan 2025–2030
+        </span>
 
       </div>
 
 
-      <div class="visi-grid">
+      <!-- MISI -->
+      <div class="misi-list">
 
-        <!-- VISI -->
-        <div class="visi-card">
-
-          <div class="visi-icon">
-            <img src="{{ asset('IMG/profil/icon/vision.svg') }}" alt="">
+        <div class="misi-item">
+          <span>01</span>
+          <div>
+            <h3>Karakter &amp; Budi Pekerti Luhur</h3>
+            <p>
+              Menyelenggarakan pembinaan keagamaan dan karakter Pancasila yang kokoh,
+              berintegritas, mandiri, dan berbudaya kerja profesional.
+            </p>
           </div>
-
-          <p class="visi-small">
-            VISI KAMI
-          </p>
-
-          <h3>
-            "Menjadi Sekolah Menengah
-            Kejuruan Berbasis Teknologi
-            Informasi Terdepan di Indonesia yang
-            Menghasilkan Lulusan Berakhlak
-            Mulia, Kompeten Standar Global,
-            dan Siap Memimpin Inovasi Industri."
-          </h3>
-
-          <span class="visi-year">
-            <img src="{{ asset('IMG/profil/icon/bendera.svg') }}" alt="">
-            Target Strategis Pendidikan 2025–2030
-          </span>
-
         </div>
 
-
-        <!-- MISI -->
-        <div class="misi-list">
-
-          <div class="misi-item">
-            <span>01</span>
-            <div>
-              <h3>Karakter &amp; Budi Pekerti Luhur</h3>
-              <p>
-                Menyelenggarakan pembinaan keagamaan dan karakter Pancasila yang kokoh,
-                berintegritas, mandiri, dan berbudaya kerja profesional.
-              </p>
-            </div>
+        <div class="misi-item">
+          <span>02</span>
+          <div>
+            <h3>Kurikulum Presisi Industri 4.0</h3>
+            <p>
+              Menerapkan kurikulum berbasis Teaching Factory (TeFa) yang selaras secara dinamis
+              dengan tuntutan dunia usaha dan dunia industri (DUDI).
+            </p>
           </div>
+        </div>
 
-          <div class="misi-item">
-            <span>02</span>
-            <div>
-              <h3>Kurikulum Presisi Industri 4.0</h3>
-              <p>
-                Menerapkan kurikulum berbasis Teaching Factory (TeFa) yang selaras secara dinamis
-                dengan tuntutan dunia usaha dan dunia industri (DUDI).
-              </p>
-            </div>
+        <div class="misi-item">
+          <span>03</span>
+          <div>
+            <h3>Sertifikasi &amp; Standarisasi Internasional</h3>
+            <p>
+              Membekali setiap lulusan dengan sertifikasi kompetensi keahlian resmi BNSP serta
+              sertifikasi vendor global terakreditasi.
+            </p>
           </div>
+        </div>
 
-          <div class="misi-item">
-            <span>03</span>
-            <div>
-              <h3>Sertifikasi &amp; Standarisasi Internasional</h3>
-              <p>
-                Membekali setiap lulusan dengan sertifikasi kompetensi keahlian resmi BNSP serta
-                sertifikasi vendor global terakreditasi.
-              </p>
-            </div>
+        <div class="misi-item">
+          <span>04</span>
+          <div>
+            <h3>Fasilitas &amp; Ekosistem Digital Berdaya Saing</h3>
+            <p>
+              Mengembangkan infrastruktur pembelajaran modern berbasis high-end cloud
+              workstation, studio multimedia, dan cyber lab berstandar korporat.
+            </p>
           </div>
+        </div>
 
-          <div class="misi-item">
-            <span>04</span>
-            <div>
-              <h3>Fasilitas &amp; Ekosistem Digital Berdaya Saing</h3>
-              <p>
-                Mengembangkan infrastruktur pembelajaran modern berbasis high-end cloud
-                workstation, studio multimedia, dan cyber lab berstandar korporat.
-              </p>
-            </div>
+        <div class="misi-item">
+          <span>05</span>
+          <div>
+            <h3>Kewirausahaan Digital &amp; Inkubasi Startup</h3>
+            <p>
+              Mendorong daya cipta talenta muda untuk menghasilkan solusi teknologi tepat guna
+              yang mampu menciptakan lapangan kerja mandiri.
+            </p>
           </div>
-
-          <div class="misi-item">
-            <span>05</span>
-            <div>
-              <h3>Kewirausahaan Digital &amp; Inkubasi Startup</h3>
-              <p>
-                Mendorong daya cipta talenta muda untuk menghasilkan solusi teknologi tepat guna
-                yang mampu menciptakan lapangan kerja mandiri.
-              </p>
-            </div>
-          </div>
-
         </div>
 
       </div>
 
     </div>
-  </section>
 
+  </div>
+</section>
 
   <!-- ==================== NILAI BUDAYA ==================== -->
   <section class="nilai-section">
@@ -398,255 +397,6 @@ Profil SMK INFOKOM Kota Bogor sebagai sekolah menengah kejuruan pusat keunggulan
     </div>
   </section>
 
-
-  <!-- ==================== FASILITAS ==================== -->
-  <section class="fasilitas-section">
-    <div class="profil-container">
-
-      <div class="section-heading left">
-
-        <p class="section-label mb-1">
-          FASILITAS UNGGULAN
-        </p>
-
-        <h2>
-          Fasilitas Standar Industri Modern
-        </h2>
-
-      </div>
-
-
-      <div class="fasilitas-grid">
-
-        <!-- ========== FASILITAS 1: LAB RPL ========== -->
-        <article class="fasilitas-card">
-
-          <img
-            class="fasilitas-image"
-            src="{{ asset('IMG/profil/component/lab-rpl.svg') }}"
-            alt="Lab Rekayasa Perangkat Lunak"
-          >
-
-          <div class="fasilitas-content">
-
-            <div class="fasilitas-jurusan">
-              <img src="{{ asset('IMG/profil/icon/icon-code.svg') }}" alt="">
-              <p>LABORATORIUM</p>
-            </div>
-
-            <h3>Lab Rekayasa Perangkat Lunak</h3>
-
-            <span>
-              Dilengkapi 42 unit PC Core i7 gen terbaru, GPU
-              akselerator, dan lisensi IDE pengembangan enterprise.
-            </span>
-
-            <div class="fasilitas">
-              <p>
-                <strong>Kapasitas:</strong>
-                42 Siswa
-              </p>
-              <span>
-                Ruang Ber-AC &amp; Fiber Optic 1 Gbps
-              </span>
-            </div>
-
-          </div>
-
-        </article>
-
-        <!-- ========== FASILITAS 2: LAB JARINGAN ========== -->
-        <article class="fasilitas-card">
-
-          <img
-            class="fasilitas-image"
-            src="{{ asset('IMG/profil/component/lab-tkj.svg') }}"
-            alt="Laboratorium Jaringan &amp; Server"
-          >
-
-          <div class="fasilitas-content">
-
-            <div class="fasilitas-jurusan">
-              <img src="{{ asset('IMG/profil/icon/icon-jaringan.svg') }}" alt="">
-              <p>LAB HARDWARE</p>
-            </div>
-
-            <h3>Laboratorium Jaringan &amp; Server</h3>
-
-            <span>
-              Mini data center terpadu dengan rack server
-              profesional, router Cisco, MikroTik routerboard,
-              dan fusion splicer fiber optic.
-            </span>
-
-            <div class="fasilitas">
-              <p>
-                <strong>Kapasitas:</strong>
-                38 Siswa
-              </p>
-              <span>
-                MikroTik Certified Academy
-              </span>
-            </div>
-
-          </div>
-
-        </article>
-
-        <!-- ========== FASILITAS 3: STUDIO MULTIMEDIA ========== -->
-        <article class="fasilitas-card">
-
-          <img
-            class="fasilitas-image"
-            src="{{ asset('IMG/profil/component/lab-pspt.svg') }}"
-            alt="Studio Multimedia &amp; Broadcasting"
-          >
-
-          <div class="fasilitas-content">
-
-            <div class="fasilitas-jurusan">
-              <img src="{{ asset('IMG/profil/icon/icon-dkv.svg') }}" alt="">
-              <p>STUDIO KREATIF</p>
-            </div>
-
-            <h3>Studio Multimedia &amp; Broadcasting</h3>
-
-            <span>
-              Dilengkapi cyclorama green screen, audio
-              switcher console, lighting kit studio 4K, dan
-              editing suite berspesifikasi Apple iMac.
-            </span>
-
-            <div class="fasilitas">
-              <p>
-                <strong>Kapasitas:</strong>
-                30 Siswa
-              </p>
-              <span>
-                Peredam Akustik Standar TV
-              </span>
-            </div>
-
-          </div>
-
-        </article>
-
-        <!-- ========== FASILITAS 4: LAB DESAIN ========== -->
-        <article class="fasilitas-card">
-
-          <img
-            class="fasilitas-image"
-            src="{{ asset('IMG/profil/component/lab-dkv.svg') }}"
-            alt="Lab Desain Kreatif"
-          >
-
-          <div class="fasilitas-content">
-
-            <div class="fasilitas-jurusan">
-              <img src="{{ asset('IMG/profil/icon/icon-code.svg') }}" alt="">
-              <p>LAB KREATIF</p>
-            </div>
-
-            <h3>Lab Desain Kreatif</h3>
-
-            <span>
-              Laboratorium khusus untuk mendukung pembelajaran desain grafis, ilustrasi, fotografi, serta pengembangan konten visual menggunakan perangkat dan software desain.
-            </span>
-
-            <div class="fasilitas">
-              <p>
-                <strong>Kapasitas:</strong>
-                42 Siswa
-              </p>
-              <span>
-                Komputer desain dan alat pencetak sablon
-              </span>
-            </div>
-
-          </div>
-
-        </article>
-
-        <!-- ========== FASILITAS 5: MUSHOLA ========== -->
-        <article class="fasilitas-card">
-
-          <img
-            class="fasilitas-image"
-            src="{{ asset('IMG/profil/component/mushola.jpg') }}"
-            alt="Mushola Infokom"
-          >
-
-          <div class="fasilitas-content">
-
-            <div class="fasilitas-jurusan">
-              <img src="{{ asset('IMG/profil/icon/icon-mushola.svg') }}" alt="">
-              <p>SPIRITUAL</p>
-            </div>
-
-            <h3>Mushola Infokom</h3>
-
-            <span>
-              Pusat pembinaan adab, sholat berjamaah harian,
-              kajian keputrian, dan kegiatan keagamaan siswa
-              dalam suasana asri dan sejuk.
-            </span>
-
-            <div class="fasilitas">
-              <p>
-                <strong>Daya Tampung:</strong>
-                16 Jamaah
-              </p>
-              <span>
-                Tempat Wudhu Dan WC
-              </span>
-            </div>
-
-          </div>
-
-        </article>
-
-        <!-- ========== FASILITAS 6: PERPUSTAKAAN ========== -->
-        <article class="fasilitas-card">
-
-          <img
-            class="fasilitas-image"
-            src="{{ asset('IMG/profil/component/perpustakaan.jpg') }}"
-            alt="Perpustakaan Digital E-Library"
-          >
-
-          <div class="fasilitas-content">
-
-            <div class="fasilitas-jurusan">
-              <img src="{{ asset('IMG/profil/icon/icon-perpustakaan.svg') }}" alt="">
-              <p>PUSAT LITERASI</p>
-            </div>
-
-            <h3>Perpustakaan Digital E-Library</h3>
-
-            <span>
-              Akses ke lebih dari 2.000 jurnal teknologi, e-book
-              resmi penerbit internasional, serta ruang
-              diskusi multimedia yang nyaman.
-            </span>
-
-            <div class="fasilitas">
-              <p>
-                <strong>Koleksi:</strong>
-                2.000+ Judul
-              </p>
-              <span>
-                Sistem Barcode &amp; RFID
-              </span>
-            </div>
-
-          </div>
-
-        </article>
-
-      </div>
-
-    </div>
-  </section>
 
 
   <!-- ==================== TENAGA PENDIDIK ==================== -->

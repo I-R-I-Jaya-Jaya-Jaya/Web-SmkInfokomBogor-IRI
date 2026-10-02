@@ -42,3 +42,7 @@ Route::get('/ppdb', function () {
 Route::get('/fasilitas', function () {
     return view('frontend.fasilitas');
 })->name('fasilitas');
+
+Route::get('/prestasi', function () {
+    return view('frontend.prestasi');
+})->name('prestasi');

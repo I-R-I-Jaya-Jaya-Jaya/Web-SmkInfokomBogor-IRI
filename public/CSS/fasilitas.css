@@ -1,24 +1,25 @@
-/* =========================================================
-   css/fasilitas.css
-   Seluruh warna, font, dan bayangan memakai variabel :root
-   dari style.css: --navy, --navy-dark, --navy-light, --yellow,
-   --text, --text-muted, --ember-700, --bg-soft / -2 / -3,
-   --white, --font-judul, --font-teks, --shadow, --shadow-hover.
-   Class global yang dipakai ulang: .shell, .btn, .btn-primary,
-   .btn-ghost, .btn-icon.
-   ========================================================= */
 
-/* Hanya dua token lokal: tidak ada padanannya di :root style.css */
 :root {
-  --fas-ink: #000a1e;   /* hitam-biru hero & CTA (belum ada di root) */
-  --fas-nav-h: 73px;    /* tinggi .main-header: 16 + 40 + 16 + border 1px */
+  --fas-ink: #000a1e;   
+  --fas-nav-h: 73px;   
 }
+
+
 
 .fas-icon {
   width: 16px;
   height: 16px;
   flex-shrink: 0;
   object-fit: contain;
+}
+
+
+.fas-hero__title {
+  font-family: var(--font-judul);
+    font-size: 38px;
+    color: #fff;
+    font-weight: 800;
+     margin: 0 0 14px;
 }
 
 .fas-sr-only {
@@ -63,10 +64,7 @@
   position: relative;
   overflow: hidden;
   color: var(--white);
-  background:
-    radial-gradient(60rem 28rem at 85% -10%, color-mix(in srgb, var(--navy-light) 35%, transparent), transparent 60%),
-    radial-gradient(40rem 20rem at 0% 110%, color-mix(in srgb, var(--yellow) 7%, transparent), transparent 60%),
-    var(--fas-ink);
+  background: #002147 ;
 }
 .fas-hero::before {
   content: "";
@@ -112,23 +110,22 @@
   .fas-hero__main { grid-template-columns: 1.45fr 1fr; gap: 56px; }
 }
 
+
 .fas-hero__title {
-  color: var(--white);
-  font-size: 36px;
-  font-weight: 800;
-  line-height: 1.08;
-  letter-spacing: -0.02em;
+  font-family: var(--font-judul);
+    font-size: 38px;
+    color: #fff;
+    font-weight: 800;
+     margin: 0 0 14px;
 }
-@media (min-width: 640px)  { .fas-hero__title { font-size: 48px; } }
-@media (min-width: 1024px) { .fas-hero__title { font-size: 54px; } }
 .fas-hero__title span { color: var(--yellow); }
 
 .fas-hero__desc {
-  max-width: 520px;
+  max-width: 700px;
   margin-top: 20px;
-  font-size: 15px;
+  font: 400 18px/1 var(--font-teks);
+  color: #DCE9FF;
   line-height: 1.7;
-  color: rgba(255, 255, 255, 0.7);
 }
 
 .fas-hero__certs { display: grid; gap: 12px; }
@@ -241,7 +238,8 @@
 .fas-catalog { padding-block: 56px; background: var(--white); }
 @media (min-width: 1024px) { .fas-catalog { padding-block: 80px; } }
 
-.fas-section-head { display: flex; flex-direction: column; gap: 20px; }
+.fas-section-head { display: flex; 
+  margin-bottom:60px;flex-direction: column; gap: 20px; }
 @media (min-width: 768px) {
   .fas-section-head { flex-direction: row; align-items: flex-end; justify-content: space-between; }
 }
@@ -417,7 +415,7 @@
   width: 48px;
   height: 48px;
   border-radius: 12px;
-  background: color-mix(in srgb, var(--yellow) 30%, transparent);
+  background: #E5EEFF;
 }
 .fas-feature__icon .fas-icon { width: 24px; height: 24px; }
 .fas-feature__title { margin-top: 20px; font-size: 20px; font-weight: 700; line-height: 1.35; }
@@ -447,7 +445,7 @@
   padding: 32px;
   border-radius: 24px;
   color: var(--white);
-  background: var(--fas-ink);
+  background: #002147 ;
 }
 @media (min-width: 640px)  { .fas-cta__box { padding: 48px; } }
 @media (min-width: 1024px) { .fas-cta__box { padding: 56px; } }

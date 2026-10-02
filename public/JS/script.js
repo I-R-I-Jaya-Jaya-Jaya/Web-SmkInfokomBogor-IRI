@@ -10,6 +10,75 @@
    Tiap modul dibungkus try/catch supaya kalau ada satu bagian
    gagal (misal elemen tidak ditemukan), bagian lain tetap jalan.
    ============================================================ */
+
+
+   /* ============================================================
+   NAVBAR SMK INFOKOM — dropdown desktop & menu mobile
+   Simpan sebagai public/JS/navbar.js
+   ============================================================ */
+document.addEventListener('DOMContentLoaded', function () {
+
+  /* ---------- Dropdown desktop ---------- */
+  var groups = document.querySelectorAll('.has-dropdown');
+
+  function closeAll(except) {
+    groups.forEach(function (g) {
+      if (g === except) return;
+      g.classList.remove('open');
+      var btn = g.querySelector('.dropdown-toggle');
+      if (btn) btn.setAttribute('aria-expanded', 'false');
+    });
+  }
+
+  groups.forEach(function (g) {
+    var btn = g.querySelector('.dropdown-toggle');
+    if (!btn) return;
+
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var open = g.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      closeAll(g);
+    });
+  });
+
+  document.addEventListener('click', function () { closeAll(); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeAll();
+  });
+
+  /* ---------- Menu mobile ---------- */
+  var toggle = document.getElementById('menu-toggle');
+  var menu = document.getElementById('mobile-menu');
+  var iconOpen = document.getElementById('icon-open');
+  var iconClose = document.getElementById('icon-close');
+
+  if (!toggle || !menu) return;
+
+  function setMenu(open) {
+    menu.classList.toggle('hidden', !open);
+    if (iconOpen) iconOpen.classList.toggle('hidden', open);
+    if (iconClose) iconClose.classList.toggle('hidden', !open);
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    toggle.setAttribute('aria-label', open ? 'Tutup menu navigasi' : 'Buka menu navigasi');
+  }
+
+  toggle.addEventListener('click', function () {
+    setMenu(menu.classList.contains('hidden'));
+  });
+
+  // tutup menu setelah salah satu link diklik (penting untuk link anchor di halaman yang sama)
+  menu.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () { setMenu(false); });
+  });
+
+  // otomatis tutup bila layar diperbesar ke ukuran desktop
+  window.addEventListener('resize', function () {
+    if (window.innerWidth >= 1024) setMenu(false);
+  });
+});
+
+
 (function () {
   'use strict';
 
@@ -79,7 +148,7 @@
     loader.className = 'ai-loader';
     loader.innerHTML =
     '<div class="ai-loader-logo">' +
-        '<img src="/IMG/logo-infokom.svg" alt="Logo SMK INFOKOM">' +
+        '<img src="/IMG/home/logo-infokom.svg" alt="Logo SMK INFOKOM">' +
     '</div>' +
     '<div class="ai-loader-bar">' +
         '<span></span>' +

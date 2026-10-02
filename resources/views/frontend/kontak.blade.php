@@ -470,7 +470,7 @@
                         Jadwalkan Campus Tour
                     </a>
 
-                    <a href="{{ route('profil') }}" class="kontak-btn-outline">
+                    <a href="{{ route('fasilitas') }}" class="kontak-btn-outline">
                         Lihat Semua Fasilitas
                     </a>
                 </div>
