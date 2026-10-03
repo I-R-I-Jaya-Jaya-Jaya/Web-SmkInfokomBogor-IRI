@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChatbotController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/home', function () {
@@ -46,3 +47,9 @@ Route::get('/fasilitas', function () {
 Route::get('/prestasi', function () {
     return view('frontend.prestasi');
 })->name('prestasi');
+
+
+// Chatbot AI (Gemini) — dibatasi 20 pesan / menit per pengunjung
+Route::post('/chatbot', [ChatbotController::class, 'send'])
+    ->middleware('throttle:20,1')
+    ->name('chatbot.send');

@@ -35,4 +35,22 @@ return [
         ],
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Google Gemini (Chatbot AI SMK INFOKOM)
+    |--------------------------------------------------------------------------
+    | Isi GEMINI_API_KEY di file .env. Jangan pernah menaruh API key di
+    | JavaScript / file publik.
+    */
+    'gemini' => [
+        'key'             => env('GEMINI_API_KEY'),
+        'model'           => env('GEMINI_MODEL', 'gemini-3.5-flash'),
+        // Dicoba berurutan bila model utama tidak tersedia / kena limit
+        'fallback_models' => env('GEMINI_FALLBACK_MODELS', 'gemini-3.5-flash-lite,gemini-3.1-flash-lite'),
+        // minimal | low | medium | high (hanya dipakai model Gemini 3.x)
+        'thinking_level'  => env('GEMINI_THINKING_LEVEL', 'low'),
+        'endpoint'        => env('GEMINI_ENDPOINT', 'https://generativelanguage.googleapis.com/v1beta'),
+        'timeout'         => (int) env('GEMINI_TIMEOUT', 40),
+    ],
+
 ];

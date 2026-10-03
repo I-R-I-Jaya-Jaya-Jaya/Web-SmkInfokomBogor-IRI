@@ -13,10 +13,16 @@
 
 <meta
     name="description"
-    content="@yield('description', 'SMK INFOKOM Kota Bogor — Sekolah Menengah Kejuruan Pusat Keunggulan.')"
+    content="@yield('description', 'SMK INFOKOM Kota Bogor - Sekolah Menengah Kejuruan Pusat Keunggulan.')"
 >
 
+<link rel="icon" type="image/svg+xml" href="{{ asset('IMG/home/logo-infokom.svg') }}?v=1">
+<link rel="shortcut icon" type="image/svg+xml" href="{{ asset('IMG/home/logo-infokom.svg') }}?v=1">
+
 <meta name="theme-color" content="#000A1E">
+
+{{-- Token CSRF untuk chatbot (fetch POST) --}}
+<meta name="csrf-token" content="{{ csrf_token() }}">
 
 <meta
     property="og:title"
@@ -25,14 +31,14 @@
 
 <meta
     property="og:description"
-    content="@yield('description', 'SMK INFOKOM Kota Bogor — Sekolah Menengah Kejuruan Pusat Keunggulan.')"
+    content="@yield('description', 'SMK INFOKOM Kota Bogor - Sekolah Menengah Kejuruan Pusat Keunggulan.')"
 >
 
 <meta property="og:type" content="website">
 
 
 {{-- ============================================================
-     PAGE TRANSITION — BOOT (harus di <head>, sebelum CSS lain)
+     PAGE TRANSITION - BOOT (harus di <head>, sebelum CSS lain)
      Tugasnya: langsung menutup layar dengan overlay sebelum
      halaman sempat tergambar (tidak ada "kedip"), membaca
      status transisi dari halaman sebelumnya, dan menyediakan
@@ -234,6 +240,12 @@
     href="{{ asset('CSS/page-transition.css') }}"
 >
 
+{{-- CSS Chatbot AI --}}
+<link
+    rel="stylesheet"
+    href="{{ asset('CSS/chatbot.css') }}"
+>
+
 @stack('styles')
 
 
@@ -337,6 +349,10 @@
 @include('components.footer')
 
 
+{{-- Chatbot AI (widget kanan bawah) --}}
+@include('components.chatbot')
+
+
 {{-- Bootstrap JavaScript --}}
 <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js">
@@ -345,6 +361,9 @@
 
 {{-- JavaScript Custom --}}
 <script src="{{ asset('JS/script.js') }}"></script>
+
+{{-- JavaScript Chatbot AI --}}
+<script src="{{ asset('JS/chatbot.js') }}"></script>
 
 @stack('scripts')
 
