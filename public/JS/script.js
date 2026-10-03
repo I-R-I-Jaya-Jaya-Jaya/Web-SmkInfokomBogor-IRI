@@ -1,21 +1,3 @@
-/* ============================================================
-   SMK INFOKOM KOTA BOGOR — Animasi Interaktif (v2, self-contained)
-   Vanilla JS, TANPA perlu tambahan HTML atau CSS manual.
-   Semua elemen (loader, tombol kembali ke atas) & CSS pendukung
-   dibuat otomatis lewat JS. Tinggal tambahkan satu baris ini
-   SETELAH <script src="JS/script.js"></script>:
-
-     <script src="JS/animasi-interaktif.js"></script>
-
-   Tiap modul dibungkus try/catch supaya kalau ada satu bagian
-   gagal (misal elemen tidak ditemukan), bagian lain tetap jalan.
-   ============================================================ */
-
-
-   /* ============================================================
-   NAVBAR SMK INFOKOM — dropdown desktop & menu mobile
-   Simpan sebagai public/JS/navbar.js
-   ============================================================ */
 document.addEventListener('DOMContentLoaded', function () {
 
   /* ---------- Dropdown desktop ---------- */
@@ -79,10 +61,16 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+/* ============================================================
+   2. ANIMASI INTERAKTIF
+   Tiap modul dibungkus try/catch supaya kalau satu bagian gagal,
+   bagian lain tetap jalan.
+   ============================================================ */
 (function () {
   'use strict';
 
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var html = document.documentElement;
 
   function safe(fn, label) {
     try {
@@ -94,28 +82,22 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
+  function wait(ms) {
+    return new Promise(function (res) { window.setTimeout(res, ms); });
+  }
+
+  /* Jalankan callback setelah overlay terangkat (atau langsung bila tidak ada overlay) */
+  function whenRevealed(cb) {
+    if (!html.classList.contains('ai-pt')) { cb(); return; }
+    document.addEventListener('ai:reveal', function () { cb(); }, { once: true });
+  }
+
   /* ==========================================================
-     0. INJECT CSS — semua style yang dibutuhkan disuntik lewat JS
-     supaya tidak perlu edit style.css manual.
+     0. INJECT CSS — style tambahan (back-to-top, reveal kartu)
      ========================================================== */
   function injectStyles() {
     if (document.getElementById('ai-styles')) return;
     var css =
-      '.ai-loader{position:fixed;inset:0;z-index:9999;background:#000A1E;' +
-      'display:flex;flex-direction:column;align-items:center;justify-content:center;' +
-      'gap:18px;transition:opacity .5s ease,visibility .5s ease;}' +
-      '.ai-loader.is-hidden{opacity:0;visibility:hidden;pointer-events:none;}' +
-       '.ai-loader-logo{display:flex;align-items:center;justify-content:center;' +
-'opacity:0;transform:translateY(10px);' +
-'animation:aiLoaderPop .6s ease forwards;}' +
-'.ai-loader-logo img{width:110px;height:auto;display:block;' +
-'object-fit:contain;}' +
-      '.ai-loader-bar{width:160px;height:3px;border-radius:999px;' +
-      'background:rgba(255,255,255,.12);overflow:hidden;}' +
-      '.ai-loader-bar span{display:block;height:100%;width:0%;background:#F5E707;' +
-      'border-radius:999px;animation:aiLoaderFill 1.1s ease forwards .15s;}' +
-      '@keyframes aiLoaderPop{to{opacity:1;transform:none;}}' +
-      '@keyframes aiLoaderFill{to{width:100%;}}' +
       '.ai-back-to-top{position:fixed;right:20px;bottom:20px;z-index:40;' +
       'width:46px;height:46px;border:none;border-radius:50%;background:#F5E707;' +
       'color:#002147;font-size:18px;font-weight:800;cursor:pointer;' +
@@ -128,8 +110,7 @@ document.addEventListener('DOMContentLoaded', function () {
       'transition:opacity .6s ease,transform .6s ease;}' +
       '.ai-reveal.is-visible{opacity:1;transform:none;}' +
       '@media (prefers-reduced-motion: reduce){' +
-      '.ai-loader,.ai-loader-logo,.ai-loader-bar span,.ai-back-to-top,.ai-reveal' +
-      '{animation:none!important;transition:none!important;}}';
+      '.ai-back-to-top,.ai-reveal{animation:none!important;transition:none!important;}}';
 
     var style = document.createElement('style');
     style.id = 'ai-styles';
@@ -138,43 +119,281 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /* ==========================================================
-     1. PAGE LOADER — dibuat otomatis, tidak perlu markup HTML
+     1. PAGE TRANSITION
+     Alur:
+       klik menu -> overlay naik (nama halaman tujuan muncul di
+       tengah) -> simpan status -> pindah halaman ->
+       halaman baru MASIH tertutup overlay yang sama, progress
+       dilanjutkan dari angka terakhir -> overlay terangkat ->
+       konten muncul.
      ========================================================== */
-  function initPageLoader() {
-    if (reduced) return;
-    if (document.body.getAttribute('data-no-loader') === 'true') return;
+  function initPageTransition() {
+    var P = window.aiPT;
+    var el = document.getElementById('ptr');
 
-    var loader = document.createElement('div');
-    loader.className = 'ai-loader';
-    loader.innerHTML =
-    '<div class="ai-loader-logo">' +
-        '<img src="/IMG/home/logo-infokom.svg" alt="Logo SMK INFOKOM">' +
-    '</div>' +
-    '<div class="ai-loader-bar">' +
-        '<span></span>' +
-    '</div>';
-    document.body.insertBefore(loader, document.body.firstChild);
+    if (P && P.ctrl) return; // sudah diinisialisasi
 
-    function hide() {
-      if (!loader.parentNode) return;
-      loader.classList.add('is-hidden');
-      window.setTimeout(function () {
-        if (loader.parentNode) loader.parentNode.removeChild(loader);
-      }, 550);
+    // Tanpa overlay / tanpa Web Animations API / reduced motion: lewati dengan aman
+    if (!P || !el || reduced || typeof el.animate !== 'function') {
+      html.classList.remove('ai-pt');
+      document.dispatchEvent(new CustomEvent('ai:reveal'));
+      return;
+    }
+    P.ctrl = true;
+
+    var EASE = 'cubic-bezier(.76,0,.24,1)';
+    var ENTER_MS = 680;       // tirai naik menutup halaman lama
+    var HOLD_MS = 260;        // jeda agar nama halaman sempat terbaca
+    var LEAVE_MS = 900;       // tirai terangkat membuka halaman baru
+    var center = el.querySelector('.ptr-center');
+
+    var busy = false;         // sedang berpindah halaman
+    var left = false;         // overlay sudah mulai terangkat
+    var navTimer = 0;
+    var anims = [];
+
+    /* ---------- Progress (animasi halus berbasis waktu) ---------- */
+    var loop = { raf: 0, last: 0, target: .9, tau: 800, onDone: null, running: false };
+
+    function tick(now) {
+      if (!loop.running) return;
+      var dt = Math.min(now - loop.last, 64);
+      loop.last = now;
+      var np = P.p + (loop.target - P.p) * (1 - Math.exp(-dt / loop.tau));
+      if (loop.target >= 1 && np > .994) np = 1;
+      P.setP(np);
+      if (np >= 1) {
+        loop.running = false;
+        var cb = loop.onDone;
+        loop.onDone = null;
+        if (cb) cb();
+        return;
+      }
+      loop.raf = window.requestAnimationFrame(tick);
     }
 
-    var minDelay = new Promise(function (res) { window.setTimeout(res, 700); });
-    var pageReady = new Promise(function (res) {
-      if (document.readyState === 'complete') { res(); return; }
-      window.addEventListener('load', res, { once: true });
-    });
-    Promise.all([minDelay, pageReady]).then(hide);
+    function startLoop() {
+      if (loop.running) return;
+      loop.running = true;
+      loop.last = performance.now();
+      loop.raf = window.requestAnimationFrame(tick);
+    }
 
-    window.setTimeout(hide, 3500);
+    function stopLoop() {
+      loop.running = false;
+      window.cancelAnimationFrame(loop.raf);
+    }
+
+    function track(a) { anims.push(a); return a; }
+
+    function cancelAnims() {
+      anims.forEach(function (a) { try { a.cancel(); } catch (e) {} });
+      anims = [];
+    }
+
+    /* ---------- Overlay terangkat (membuka halaman) ---------- */
+    function finishHide() {
+      stopLoop();
+      cancelAnims();
+      html.classList.remove('ai-pt');
+      el.classList.remove('is-leaving', 'is-intro');
+      busy = false;
+      left = true;
+    }
+
+    function leave() {
+      if (left) return;
+      left = true;
+      stopLoop();
+      P.setP(1);
+      el.classList.add('is-leaving');
+      document.dispatchEvent(new CustomEvent('ai:reveal'));
+
+      track(center.animate(
+        [
+          { transform: 'translate3d(0,0,0)', opacity: 1 },
+          { transform: 'translate3d(0,-70px,0)', opacity: 0 }
+        ],
+        { duration: 520, easing: 'cubic-bezier(.5,0,.75,0)', fill: 'forwards' }
+      ));
+
+      var a = track(el.animate(
+        [
+          { transform: 'translateY(0%) translateY(0px)' },
+          { transform: 'translateY(-100%) translateY(-90px)' }
+        ],
+        { duration: LEAVE_MS, easing: EASE, fill: 'forwards' }
+      ));
+      a.onfinish = finishHide;
+      a.oncancel = finishHide;
+    }
+
+    /* ---------- Halaman baru terbuka: lanjutkan progress ---------- */
+    function arrive() {
+      var st = P.state;
+      var cont = !!st;
+      P.setP(cont ? (st.p || 0) : 0);
+
+      loop.target = .9;
+      loop.tau = cont ? 700 : 800;
+      loop.onDone = leave;
+      startLoop();
+
+      var loaded = new Promise(function (res) {
+        if (document.readyState === 'complete') res();
+        else window.addEventListener('load', res, { once: true });
+      });
+      var fonts = (document.fonts && document.fonts.ready)
+        ? Promise.race([document.fonts.ready, wait(2500)])
+        : Promise.resolve();
+      var minShow = wait(cont ? 520 : 1100);
+
+      Promise.race([Promise.all([loaded, fonts, minShow]), wait(5500)]).then(function () {
+        loop.target = 1;
+        loop.tau = 100;
+        startLoop();
+      });
+    }
+
+    /* ---------- Klik menu: tirai naik menutup halaman ---------- */
+    function navigate(url) {
+      try {
+        sessionStorage.setItem('ai-pt', JSON.stringify({
+          t: Date.now(),
+          p: P.p,
+          eyebrow: 'Menuju halaman',
+          title: pendingInfo.title,
+          sub: pendingInfo.sub
+        }));
+      } catch (e) { /* abaikan */ }
+
+      // Bila navigasi gagal / dibatalkan, jangan biarkan layar terkunci
+      navTimer = window.setTimeout(function () {
+        left = false;
+        loop.target = 1;
+        loop.tau = 100;
+        loop.onDone = leave;
+        startLoop();
+      }, 10000);
+
+      window.location.assign(url);
+    }
+
+    var pendingInfo = { title: '', sub: '' };
+
+    function go(u) {
+      if (busy) return;
+      busy = true;
+      left = false;
+
+      var info = P.resolve(u.href) || { title: 'Halaman berikutnya', sub: '' };
+      pendingInfo = info;
+
+      cancelAnims();
+      stopLoop();
+      P.paint({ eyebrow: 'Menuju halaman', title: info.title, sub: info.sub }, true, 0);
+
+      loop.target = .52;
+      loop.tau = 320;
+      loop.onDone = null;
+
+      html.classList.add('ai-pt');
+
+      var a = track(el.animate(
+        [
+          { transform: 'translateY(100%) translateY(90px)' },
+          { transform: 'translateY(0%) translateY(0px)' }
+        ],
+        { duration: ENTER_MS, easing: EASE, fill: 'forwards' }
+      ));
+      startLoop();
+
+      var covered = new Promise(function (res) { a.onfinish = res; a.oncancel = res; });
+      Promise.all([covered, wait(HOLD_MS)]).then(function () { navigate(u.href); });
+    }
+
+    /* ---------- Intersep klik link internal ---------- */
+    function onClick(e) {
+      if (e.defaultPrevented || e.button !== 0) return;
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+      var a = e.target.closest ? e.target.closest('a[href]') : null;
+      if (!a) return;
+      if (a.target && a.target !== '_self') return;
+      if (a.hasAttribute('download') || a.hasAttribute('data-no-transition')) return;
+
+      var href = a.getAttribute('href');
+      if (!href || /^(#|mailto:|tel:|sms:|javascript:)/i.test(href)) return;
+
+      var u;
+      try { u = new URL(a.href, window.location.href); } catch (err) { return; }
+      if (u.protocol !== 'http:' && u.protocol !== 'https:') return;
+      if (u.origin !== window.location.origin) return;
+
+      // Halaman yang sama: jangan muat ulang
+      if (u.pathname === window.location.pathname && u.search === window.location.search) {
+        if (!u.hash) {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        return; // ada hash -> scroll anchor bawaan browser
+      }
+
+      e.preventDefault();
+      go(u);
+    }
+    document.addEventListener('click', onClick);
+
+    /* ---------- Prefetch saat hover/touch agar pindah halaman lebih cepat ---------- */
+    var prefetched = {};
+    function prefetch(e) {
+      var a = e.target.closest ? e.target.closest('a[href]') : null;
+      if (!a) return;
+      try {
+        var u = new URL(a.href, window.location.href);
+        if (u.origin !== window.location.origin) return;
+        if (u.pathname === window.location.pathname) return;
+        var key = u.pathname + u.search;
+        if (prefetched[key]) return;
+        prefetched[key] = true;
+        var l = document.createElement('link');
+        l.rel = 'prefetch';
+        l.as = 'document';
+        l.href = key;
+        document.head.appendChild(l);
+      } catch (err) { /* abaikan */ }
+    }
+    document.addEventListener('pointerover', prefetch, { passive: true });
+    document.addEventListener('touchstart', prefetch, { passive: true });
+
+    /* ---------- Interaktif: latar mengikuti gerakan pointer ---------- */
+    var mx = 0, my = 0, pmRaf = 0;
+    window.addEventListener('pointermove', function (e) {
+      if (!html.classList.contains('ai-pt')) return;
+      mx = (e.clientX / window.innerWidth - .5) * 2;
+      my = (e.clientY / window.innerHeight - .5) * 2;
+      if (pmRaf) return;
+      pmRaf = window.requestAnimationFrame(function () {
+        pmRaf = 0;
+        el.style.setProperty('--mx', mx.toFixed(3));
+        el.style.setProperty('--my', my.toFixed(3));
+      });
+    }, { passive: true });
+
+    /* ---------- Tombol Back/Forward (bfcache) ---------- */
+    window.addEventListener('pageshow', function (e) {
+      if (!e.persisted) return;
+      window.clearTimeout(navTimer);
+      finishHide();
+      document.dispatchEvent(new CustomEvent('ai:reveal'));
+    });
+
+    arrive();
   }
 
   /* ==========================================================
      2. HERO ENTRANCE — elemen hero muncul bertahap
+        (menunggu overlay terangkat agar animasinya terlihat)
      ========================================================== */
   function initHeroEntrance() {
     var hero = document.querySelector('.hero-section, .hero');
@@ -202,12 +421,14 @@ document.addEventListener('DOMContentLoaded', function () {
       el.style.transition = 'opacity .7s ease, transform .7s ease';
     });
 
-    var startDelay = 250;
-    found.forEach(function (el, i) {
-      window.setTimeout(function () {
-        el.style.opacity = '1';
-        el.style.transform = 'none';
-      }, startDelay + i * 130);
+    whenRevealed(function () {
+      var startDelay = 280;
+      found.forEach(function (el, i) {
+        window.setTimeout(function () {
+          el.style.opacity = '1';
+          el.style.transform = 'none';
+        }, startDelay + i * 130);
+      });
     });
   }
 
@@ -269,7 +490,7 @@ document.addEventListener('DOMContentLoaded', function () {
   /* ==========================================================
      4. REVEAL BERTAHAP UNTUK GRID KARTU
      Pakai class sendiri (.ai-reveal) supaya tidak bentrok
-     dengan sistem .reveal milik script.js.
+     dengan sistem .reveal milik script lain.
      ========================================================== */
   function initStaggerGrids() {
     var gridSelectors = [
@@ -304,7 +525,11 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
 
-    items.forEach(function (el) { io.observe(el); });
+    // Mulai mengamati setelah overlay terangkat, supaya kartu yang
+    // sudah ada di layar ikut beranimasi dan tidak "terlewat".
+    whenRevealed(function () {
+      items.forEach(function (el) { io.observe(el); });
+    });
   }
 
   /* ==========================================================
@@ -353,7 +578,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function boot() {
     safe(injectStyles, 'injectStyles');
-    safe(initPageLoader, 'initPageLoader');
+    safe(initPageTransition, 'initPageTransition');
     safe(initHeroEntrance, 'initHeroEntrance');
     safe(initStaggerGrids, 'initStaggerGrids');
     safe(initCounters, 'initCounters');
@@ -369,20 +594,26 @@ document.addEventListener('DOMContentLoaded', function () {
 })();
 
 
+/* ============================================================
+   3. VIDEO COVER (halaman home)
+   Diberi pengecekan null agar tidak error di halaman lain.
+   ============================================================ */
 document.addEventListener('DOMContentLoaded', function () {
-    const playBtn = document.getElementById('playVideoBtn');
-    const cover = document.getElementById('videoCover');
-    const videoBox = document.getElementById('videoIframe');
-    const video = document.getElementById('localVideo');
+  var playBtn = document.getElementById('playVideoBtn');
+  var cover = document.getElementById('videoCover');
+  var videoBox = document.getElementById('videoIframe');
+  var video = document.getElementById('localVideo');
 
-    playBtn.addEventListener('click', function () {
-        // Sembunyikan cover
-        cover.style.display = 'none';
+  if (!playBtn || !cover || !videoBox || !video) return;
 
-        // Tampilkan video
-        videoBox.style.display = 'block';
+  playBtn.addEventListener('click', function () {
+    // Sembunyikan cover
+    cover.style.display = 'none';
 
-        // Langsung putar
-        video.play();
-    });
+    // Tampilkan video
+    videoBox.style.display = 'block';
+
+    // Langsung putar
+    video.play();
+  });
 });

@@ -1,0 +1,480 @@
+/* ============================================================
+   SMK INFOKOM KOTA BOGOR — Page Transition (v3)
+   Simpan sebagai: public/CSS/page-transition.css
+   Overlay ini dipakai di dua momen yang SAMA:
+   1) saat klik menu  -> overlay naik menutupi halaman lama
+   2) saat halaman baru terbuka -> overlay yang sama masih
+      menutupi, progress dilanjutkan, lalu terangkat ke atas.
+   Semua animasi hanya memakai transform & opacity (GPU) agar
+   tetap 60fps dan tidak patah-patah.
+   ============================================================ */
+
+:root {
+  --ptr-navy: #000A1E;
+  --ptr-yellow: #F5E707;
+  --ptr-amber: #FFC400;
+}
+
+/* Overlay hanya tampil bila <html> punya class .ai-pt */
+.ptr {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--ptr-navy);
+  color: #fff;
+  font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  cursor: progress;
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
+  will-change: transform;
+  --mx: 0;
+  --my: 0;
+}
+
+html.ai-pt .ptr {
+  display: flex;
+}
+
+/* Tepi melengkung (efek "cairan") di atas & bawah tirai */
+.ptr::before,
+.ptr::after {
+  content: "";
+  position: absolute;
+  left: -10%;
+  width: 120%;
+  height: 90px;
+  background: var(--ptr-navy);
+  pointer-events: none;
+}
+
+.ptr::before {
+  bottom: 100%;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+}
+
+.ptr::after {
+  top: 100%;
+  border-radius: 0 0 50% 50% / 0 0 100% 100%;
+}
+
+/* ---------- Latar belakang ---------- */
+.ptr-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.ptr-layer {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+  transition: transform .9s cubic-bezier(.2, .7, .2, 1);
+}
+
+.ptr-l1 {
+  transform: translate3d(calc(var(--mx) * -28px), calc(var(--my) * -22px), 0);
+}
+
+.ptr-l2 {
+  transform: translate3d(calc(var(--mx) * 36px), calc(var(--my) * 28px), 0);
+}
+
+.ptr-glow {
+  position: absolute;
+  border-radius: 50%;
+  aspect-ratio: 1;
+  will-change: transform;
+}
+
+.ptr-glow.a {
+  width: min(78vw, 720px);
+  left: -14%;
+  top: -22%;
+  background: radial-gradient(circle, rgba(30, 94, 230, .55) 0%, rgba(30, 94, 230, 0) 66%);
+  animation: ptrDriftA 9s ease-in-out infinite alternate;
+}
+
+.ptr-glow.b {
+  width: min(70vw, 640px);
+  right: -16%;
+  bottom: -26%;
+  background: radial-gradient(circle, rgba(245, 231, 7, .22) 0%, rgba(245, 231, 7, 0) 66%);
+  animation: ptrDriftB 11s ease-in-out infinite alternate;
+}
+
+.ptr-grid-mask {
+  position: absolute;
+  inset: 0;
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 10%, transparent 68%);
+  mask-image: radial-gradient(ellipse at center, #000 10%, transparent 68%);
+}
+
+.ptr-grid {
+  position: absolute;
+  inset: -56px;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, .06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, .06) 1px, transparent 1px);
+  background-size: 56px 56px;
+  will-change: transform;
+  animation: ptrGrid 5s linear infinite;
+}
+
+.ptr-dot {
+  position: absolute;
+  bottom: -12px;
+  left: var(--x);
+  width: var(--s);
+  height: var(--s);
+  border-radius: 50%;
+  background: rgba(245, 231, 7, .85);
+  opacity: 0;
+  will-change: transform, opacity;
+  animation: ptrRise var(--d) linear var(--dl) infinite;
+}
+
+/* ---------- Konten tengah ---------- */
+.ptr-center {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 780px;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  will-change: transform, opacity;
+}
+
+.ptr-emblem {
+  position: relative;
+  width: 136px;
+  height: 136px;
+  margin-bottom: 36px;
+  transform: translate3d(calc(var(--mx) * 9px), calc(var(--my) * 9px), 0);
+  transition: transform .7s cubic-bezier(.2, .7, .2, 1);
+}
+
+.ptr-emblem-in {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.ptr-orbit {
+  position: absolute;
+  inset: -17px;
+  border-radius: 50%;
+  border: 1px dashed rgba(255, 255, 255, .2);
+  animation: ptrSpin 14s linear infinite;
+}
+
+.ptr-orbit::after {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  margin-left: -4px;
+  border-radius: 50%;
+  background: var(--ptr-yellow);
+  box-shadow: 0 0 14px 2px rgba(245, 231, 7, .75);
+}
+
+.ptr-orbit.two {
+  inset: -32px;
+  border-color: rgba(255, 255, 255, .09);
+  animation: ptrSpinR 22s linear infinite;
+}
+
+.ptr-orbit.two::after {
+  width: 5px;
+  height: 5px;
+  margin-left: -2.5px;
+  top: -2.5px;
+  background: #6EA2FF;
+  box-shadow: 0 0 10px 2px rgba(110, 162, 255, .7);
+}
+
+.ptr-ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+  overflow: visible;
+}
+
+.ptr-ring circle {
+  fill: none;
+  stroke-width: 3.2;
+}
+
+.ptr-track {
+  stroke: rgba(255, 255, 255, .12);
+}
+
+.ptr-prog {
+  stroke: url(#ptrGrad);
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+.ptr-pulse {
+  position: absolute;
+  inset: 14px;
+  border-radius: 50%;
+  background: rgba(245, 231, 7, .28);
+  will-change: transform, opacity;
+  animation: ptrPulse 2.2s ease-out infinite;
+}
+
+.ptr-core {
+  position: absolute;
+  inset: 14px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at 30% 25%, rgba(255, 255, 255, .16), rgba(255, 255, 255, .04));
+  border: 1px solid rgba(255, 255, 255, .15);
+}
+
+.ptr-core img {
+  width: 58%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.ptr-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+  font: 700 .74rem/1 'Inter', system-ui, sans-serif;
+  letter-spacing: .32em;
+  text-transform: uppercase;
+  color: var(--ptr-yellow);
+}
+
+.ptr-eyebrow::before,
+.ptr-eyebrow::after {
+  content: "";
+  width: 30px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, currentColor);
+}
+
+.ptr-eyebrow::after {
+  transform: scaleX(-1);
+}
+
+.ptr-title {
+  margin: 0;
+  font-weight: 800;
+  font-size: clamp(2.1rem, 7.2vw, 4.5rem);
+  line-height: 1.06;
+  letter-spacing: -.025em;
+  color: #fff;
+  text-wrap: balance;
+}
+
+.ptr-w {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.ptr-ch {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+.ptr-sub {
+  margin: 18px 0 0;
+  max-width: 38ch;
+  min-height: 1.55em;
+  font-size: clamp(.92rem, 2.2vw, 1.08rem);
+  line-height: 1.55;
+  color: rgba(255, 255, 255, .66);
+}
+
+.ptr-meter {
+  width: min(340px, 72vw);
+  margin-top: 40px;
+}
+
+.ptr-bartrack {
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .11);
+  overflow: hidden;
+}
+
+.ptr-bar {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--ptr-yellow), var(--ptr-amber));
+  transform-origin: left center;
+  transform: scaleX(0);
+  overflow: hidden;
+  will-change: transform;
+}
+
+.ptr-bar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .75), transparent);
+  transform: translateX(-100%);
+  animation: ptrShimmer 1.4s ease-in-out infinite;
+}
+
+.ptr-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+  font: 600 .72rem/1 'Inter', system-ui, sans-serif;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .55);
+}
+
+.ptr-pct {
+  min-width: 3.4ch;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  color: #fff;
+}
+
+.ptr-foot {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: max(26px, env(safe-area-inset-bottom));
+  text-align: center;
+  font: 600 .68rem/1 'Inter', system-ui, sans-serif;
+  letter-spacing: .34em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .34);
+}
+
+/* ---------- Animasi masuk (intro) ----------
+   Hanya jalan saat .is-intro aktif: ketika klik menu atau
+   kunjungan pertama. Saat halaman baru melanjutkan transisi,
+   konten dibiarkan diam supaya terasa satu kesatuan.        */
+.ptr.is-intro .ptr-emblem-in {
+  animation: ptrPop .85s cubic-bezier(.2, .9, .25, 1.08) .05s backwards;
+}
+
+.ptr.is-intro .ptr-eyebrow {
+  animation: ptrUp .6s cubic-bezier(.2, .8, .2, 1) .12s backwards;
+}
+
+.ptr.is-intro .ptr-ch {
+  animation: ptrChar .7s cubic-bezier(.2, .85, .2, 1) calc(var(--i) * 22ms + 140ms) backwards;
+}
+
+.ptr.is-intro .ptr-sub {
+  animation: ptrUp .6s cubic-bezier(.2, .8, .2, 1) .42s backwards;
+}
+
+.ptr.is-intro .ptr-meter {
+  animation: ptrUp .6s cubic-bezier(.2, .8, .2, 1) .52s backwards;
+}
+
+.ptr.is-intro .ptr-foot {
+  animation: ptrFade .8s ease .7s backwards;
+}
+
+/* ---------- Keyframes ---------- */
+@keyframes ptrDriftA {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to   { transform: translate3d(60px, 40px, 0) scale(1.12); }
+}
+
+@keyframes ptrDriftB {
+  from { transform: translate3d(0, 0, 0) scale(1.05); }
+  to   { transform: translate3d(-50px, -36px, 0) scale(.94); }
+}
+
+@keyframes ptrGrid {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(56px, 56px, 0); }
+}
+
+@keyframes ptrRise {
+  0%   { transform: translate3d(0, 0, 0); opacity: 0; }
+  12%  { opacity: .85; }
+  100% { transform: translate3d(var(--dx), -105vh, 0); opacity: 0; }
+}
+
+@keyframes ptrSpin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes ptrSpinR {
+  to { transform: rotate(-360deg); }
+}
+
+@keyframes ptrPulse {
+  0%   { transform: scale(1); opacity: .5; }
+  100% { transform: scale(1.55); opacity: 0; }
+}
+
+@keyframes ptrShimmer {
+  to { transform: translateX(100%); }
+}
+
+@keyframes ptrUp {
+  from { opacity: 0; transform: translate3d(0, 18px, 0); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@keyframes ptrPop {
+  from { opacity: 0; transform: scale(.7); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes ptrChar {
+  from { opacity: 0; transform: translate3d(0, .55em, 0) rotateX(-70deg); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0) rotateX(0); }
+}
+
+@keyframes ptrFade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ---------- Responsif ---------- */
+@media (max-width: 575.98px) {
+  .ptr-emblem { width: 112px; height: 112px; margin-bottom: 32px; }
+  .ptr-orbit { inset: -14px; }
+  .ptr-orbit.two { inset: -26px; }
+  .ptr-eyebrow { font-size: .66rem; letter-spacing: .26em; gap: 10px; }
+  .ptr-eyebrow::before, .ptr-eyebrow::after { width: 18px; }
+  .ptr-meter { margin-top: 32px; }
+}
+
+@media (max-height: 520px) {
+  .ptr-emblem { width: 88px; height: 88px; margin-bottom: 24px; }
+  .ptr-sub, .ptr-foot { display: none; }
+  .ptr-meter { margin-top: 24px; }
+}
+
+/* Pengguna yang memilih "kurangi gerakan": tanpa overlay */
+@media (prefers-reduced-motion: reduce) {
+  .ptr { display: none !important; }
+}
