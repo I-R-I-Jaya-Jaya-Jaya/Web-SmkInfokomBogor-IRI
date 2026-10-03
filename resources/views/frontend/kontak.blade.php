@@ -118,7 +118,7 @@
                 <p class="kontak-label-mini">KANAL KOMUNIKASI TERVERIFIKASI</p>
 
                 <h2 class="kontak-section-title">
-                    Kunjungi Kampus Kami Atau Terhubung Secara Digital
+                    Kunjungi Sekolah Kami Atau Terhubung Secara Digital
                 </h2>
 
                 <p class="kontak-section-desc">
@@ -127,7 +127,6 @@
                     institusi.
                 </p>
 
-                {{-- ALAMAT KAMPUS --}}
                 <div class="kontak-info-card kontak-info-card-alamat">
 
                     <div class="kontak-info-icon">
@@ -135,9 +134,9 @@
                     </div>
 
                     <div class="kontak-info-body">
-                        <span class="kontak-info-tag">Kampus Utama</span>
+                        <span class="kontak-info-tag">Sekolah Utama</span>
 
-                        <strong>Alamat Kampus SMK INFOKOM</strong>
+                        <strong>Alamat Sekolah SMK INFOKOM</strong>
 
                         <p>{{ $kontak['kontak_alamat'] ?? 'Jl. Letjen Ibrahim Adjie No. 178, Sindangbarang, Bogor Barat, Kota Bogor, Jawa Barat 16117.' }}</p>
 
@@ -225,7 +224,7 @@
                         </div>
 
                         <div class="kontak-info-body">
-                            <span class="kontak-info-tag">Jam Layanan Kampus</span>
+                            <span class="kontak-info-tag">Jam Layanan Sekolah</span>
 
                             <div class="kontak-jam-list">
                                 <p>
@@ -404,7 +403,7 @@
 
             <div class="kontak-map-header">
                 <div>
-                    <p class="kontak-label-mini">PETA INTERAKTIF KAMPUS</p>
+                    <p class="kontak-label-mini">PETA INTERAKTIF SEKOLAH</p>
                     <h2>Lokasi Strategis di Jantung Kota Bogor Barat</h2>
                 </div>
 
@@ -503,7 +502,7 @@
 
                 <details class="kontak-faq-item" open>
                     <summary>
-                        Apakah kunjungan kampus (Campus Tour) harus membuat janji terlebih dahulu?
+                        Apakah kunjungan sekolah (Sekolah Tour) harus membuat janji terlebih dahulu?
                         <img src="{{ asset('IMG/kontak/icon/icon-arrow.svg') }}" alt="" class="kontak-faq-icon">
                     </summary>
 
@@ -524,7 +523,7 @@
 
                     <p>
                         Tes peminatan dapat dilakukan secara CBT online maupun offline di lab
-                        sekolah, sedangkan wawancara bisa tatap muka langsung di kampus atau
+                        sekolah, sedangkan wawancara bisa tatap muka langsung di sekolah atau
                         melalui video call, tergantung jalur pendaftaran yang dipilih.
                     </p>
                 </details>

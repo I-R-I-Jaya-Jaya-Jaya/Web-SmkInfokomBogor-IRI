@@ -1,0 +1,1558 @@
+/* ==========================================================================
+   MITRA KERJA SAMA — SMK INFOKOM BOGOR
+   Design tokens sesuai spesifikasi (jangan diubah nilainya)
+   ========================================================================== */
+
+:root {
+    --navy: #002147;
+    --navy-dark: #0b1c30;
+    --navy-light: #1e40af;
+    --yellow: #f5e707;
+    --amber: #f59e0b;
+
+    --leaf-900: #064e3b;
+    --leaf-800: #14532d;
+    --leaf-700: #047857;
+    --leaf-600: #059669;
+    --leaf-500: #16a34a;
+    --grape-900: #312e81;
+    --grape-800: #581c87;
+    --grape-700: #6b21a8;
+    --grape-600: #7e22ce;
+    --ember-900: #7f1d1d;
+    --ember-800: #b91c1c;
+    --ember-700: #dc2626;
+    --ember-600: #c2410c;
+
+    --text: #44474e;
+    --text-muted: #708ab5;
+    --border: #c4c6cf;
+    --bg-soft: #f8f9ff;
+    --bg-soft-2: #e5eeff;
+    --bg-soft-3: #dce9ff;
+    --white: #ffffff;
+
+    --font-judul: "Plus Jakarta Sans", system-ui, sans-serif;
+    --font-teks: "Inter", system-ui, sans-serif;
+
+    --shadow: 0 10px 30px -12px rgba(0, 33, 71, 0.18);
+    --shadow-card: 0 18px 40px -20px rgba(0, 33, 71, 0.3);
+    --shadow-hover: 0 26px 55px -22px rgba(0, 33, 71, 0.42);
+}
+
+/* ---------- base / shell ---------- */
+.mitra-page {
+    font-family: var(--font-teks);
+    color: var(--text);
+    background: var(--white);
+    -webkit-font-smoothing: antialiased;
+}
+
+.mitra-page h1,
+.mitra-page h2,
+.mitra-page h3 {
+    font-family: var(--font-judul);
+    color: var(--navy);
+    margin: 0;
+    line-height: 1.2;
+    margin-bottom: 14px;
+}
+
+.mitra-page p {
+    margin: 0;
+}
+
+.mitra-page a {
+    text-decoration: none;
+}
+
+.mitra-page section {
+    padding: 88px 0;
+}
+
+.mitra-shell {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+@media (max-width: 768px) {
+    .mitra-page section {
+        padding: 56px 0;
+    }
+}
+
+/* ---------- eyebrow / section header ---------- */
+.mitra-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--navy);
+    background: #fff9d6;
+    border: 1px solid #f3ecb0;
+    padding: 7px 16px 7px 12px;
+    border-radius: 999px;
+    margin: 0 0 20px;
+}
+
+.mitra-eyebrow-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--amber);
+    flex: none;
+}
+
+.mitra-eyebrow--plain {
+    background: none;
+    border: none;
+    color: var(--navy-light);
+    padding: 0;
+    margin-bottom: 12px;
+}
+
+.mitra-section-header--center {
+    text-align: center;
+    max-width: 620px;
+    margin: 0 auto 48px;
+}
+
+.mitra-section-header--center h2 {
+    font-size: clamp(26px, 3vw, 34px);
+    font-weight: 800;
+}
+
+.mitra-section-desc {
+    color: var(--text-muted);
+    font-size: 15.5px;
+    margin-top: 14px;
+    line-height: 1.6;
+}
+
+.mitra-section-desc--left {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/* ---------- buttons ---------- */
+.mitra-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-judul);
+    font-weight: 700;
+    font-size: 15px;
+    padding: 14px 26px;
+    border-radius: 12px;
+    border: 2px solid transparent;
+    transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease,
+        background 0.18s ease;
+    white-space: nowrap;
+}
+
+.mitra-btn-primary {
+    background: var(--yellow);
+    color: var(--navy);
+    box-shadow: var(--shadow);
+}
+
+.mitra-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+.mitra-btn-ghost {
+    background: transparent;
+    color: var(--navy);
+    border-color: var(--navy);
+}
+
+.mitra-btn-ghost:hover {
+    background: var(--navy);
+    color: var(--white);
+}
+
+.mitra-btn-icon {
+    width: 16px;
+    height: 16px;
+}
+
+.mitra-btn-lg {
+    padding: 16px 32px;
+    font-size: 16px;
+}
+
+/* ==========================================================================
+   1. HERO
+   ========================================================================== */
+.mitra-hero {
+    padding-top: 64px;
+    padding-bottom: 72px;
+    background: linear-gradient(180deg, var(--white) 0%, var(--bg-soft) 100%);
+}
+
+.mitra-hero-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 56px;
+    align-items: center;
+}
+
+.mitra-hero-title {
+    font-size: clamp(32px, 4vw, 46px);
+    font-weight: 800;
+    margin: 0 0 18px;
+}
+
+.mitra-hero-title-strong {
+    color: var(--navy);
+    text-decoration: underline;
+    text-decoration-color: var(--yellow);
+    text-decoration-thickness: 6px;
+    text-underline-offset: 6px;
+}
+
+.mitra-hero-desc {
+    color: var(--text-muted);
+    font-size: 16px;
+    line-height: 1.7;
+    max-width: 46ch;
+    margin-bottom: 30px;
+}
+
+.mitra-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 26px;
+}
+
+.mitra-hero-badges {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.mitra-hero-badges li {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--navy);
+    border: 1px solid var(--border);
+    background: var(--white);
+    padding: 8px 14px;
+    border-radius: 999px;
+}
+
+.mitra-check-icon {
+    width: 14px;
+    height: 14px;
+    color: var(--leaf-600);
+    flex: none;
+}
+
+/* hero visual card */
+.mitra-hero-visual {
+    display: flex;
+    justify-content: center;
+}
+
+.mitra-hero-card {
+    width: 100%;
+    max-width: 420px;
+    background: var(--white);
+    border-radius: 22px;
+    padding: 26px;
+    box-shadow: var(--shadow-card);
+    border: 1px solid var(--bg-soft-3);
+}
+
+.mitra-hero-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+.mitra-hero-card-kicker {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--navy);
+}
+
+.mitra-hero-card-pill {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--navy-light);
+    background: var(--bg-soft-2);
+    padding: 5px 11px;
+    border-radius: 999px;
+}
+
+.mitra-hero-card-main {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 22px;
+}
+
+.mitra-hero-card-icon {
+    width: 46px;
+    height: 46px;
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    background: var(--navy);
+    color: var(--yellow);
+}
+
+.mitra-hero-card-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.mitra-hero-card-title {
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.mitra-hero-card-subtitle {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+
+.mitra-hero-card-metric {
+    background: var(--bg-soft);
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 18px;
+}
+
+.mitra-hero-card-metric-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+    font-size: 12.5px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+}
+
+.mitra-hero-card-metric-row strong {
+    color: var(--navy);
+    font-size: 14px;
+    font-family: var(--font-judul);
+}
+
+.mitra-progress {
+    height: 7px;
+    border-radius: 999px;
+    background: var(--bg-soft-3);
+    overflow: hidden;
+}
+
+.mitra-progress-bar {
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--navy-light), var(--yellow));
+}
+
+.mitra-hero-card-badges {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+.mitra-mini-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--navy);
+    background: var(--bg-soft);
+    border: 1px solid var(--bg-soft-3);
+    border-radius: 10px;
+    padding: 9px 12px;
+}
+
+.mitra-mini-badge svg {
+    width: 14px;
+    height: 14px;
+    color: var(--leaf-600);
+    flex: none;
+}
+
+.mitra-hero-card-footer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-top: 1px dashed var(--border);
+    padding-top: 16px;
+}
+
+.mitra-avatar-stack {
+    display: flex;
+}
+
+.mitra-avatar-stack span {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--c, var(--navy));
+    color: var(--white);
+    font-size: 11px;
+    font-weight: 700;
+    font-family: var(--font-judul);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--white);
+    margin-left: -9px;
+}
+
+.mitra-avatar-stack span:first-child {
+    margin-left: 0;
+}
+
+.mitra-hero-card-footer-text {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--navy);
+}
+
+/* ==========================================================================
+   2. STATS STRIP
+   ========================================================================== */
+.mitra-stats {
+    padding-top: 0;
+    padding-bottom: 64px;
+}
+
+.mitra-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.mitra-stat-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 22px 22px 24px;
+    box-shadow: 0 8px 20px -16px rgba(0, 33, 71, 0.25);
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.mitra-stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+}
+
+.mitra-stat-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+}
+
+.mitra-stat-label {
+    font-size: 11.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--text-muted);
+}
+
+.mitra-stat-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    background: var(--bg-soft-2);
+    color: var(--navy-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+}
+
+.mitra-stat-icon svg {
+    width: 18px;
+    height: 18px;
+}
+
+.mitra-stat-number {
+    font-family: var(--font-judul);
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 4px;
+}
+
+.mitra-stat-desc {
+    color: var(--text-muted);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   3. SKEMA KOLABORASI
+   ========================================================================== */
+.mitra-skema {
+    background: var(--bg-soft);
+}
+
+.mitra-skema-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+
+.mitra-skema-card {
+    background: var(--white);
+    border-radius: 18px;
+    padding: 26px 22px;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.mitra-skema-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+}
+
+.mitra-skema-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.mitra-skema-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.mitra-skema-icon--blue {
+    background: #DCE9FF;
+    color: #000A1E;
+}
+
+.mitra-skema-icon--amber {
+    background: #F5E707;
+    color: #000A1E;
+}
+
+.mitra-skema-icon--indigo {
+    background: #002147;
+    color: #000A1E;
+}
+
+.mitra-skema-icon--purple {
+    background: #E5EEFF;
+    color: #000A1E;
+}
+
+.mitra-skema-tag {
+    align-self: flex-start;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    padding: 4px 10px;
+    border-radius: 999px;
+    margin-bottom: 12px;
+}
+
+.mitra-skema-tag--blue {
+    background: #e3ecff;
+    color: var(--navy-light);
+}
+
+.mitra-skema-tag--amber {
+    background: #fef1d8;
+    color: #b45309;
+}
+
+.mitra-skema-tag--indigo {
+    background: #e6e5fb;
+    color: var(--grape-900);
+}
+
+.mitra-skema-tag--purple {
+    background: #f2e4fb;
+    color: var(--grape-700);
+}
+
+.mitra-skema-card h3 {
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.mitra-skema-card p {
+    color: var(--text-muted);
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 18px;
+    flex: 1;
+}
+
+.mitra-skema-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--navy);
+}
+
+.mitra-skema-link svg {
+    width: 14px;
+    height: 14px;
+    transition: transform 0.18s ease;
+}
+
+.mitra-skema-link:hover svg {
+    transform: translateX(3px);
+}
+
+/* ==========================================================================
+   4. DAFTAR MITRA
+   ========================================================================== */
+.mitra-daftar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.mitra-daftar-header h2 {
+    font-size: clamp(24px, 3vw, 32px);
+    font-weight: 800;
+    max-width: 14ch;
+}
+
+.mitra-filter-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.mitra-pill {
+    font-family: var(--font-teks);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy);
+    background: var(--white);
+    border: 1px solid var(--border);
+    padding: 9px 16px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.18s ease;
+}
+
+.mitra-pill:hover {
+    border-color: var(--navy-light);
+}
+
+.mitra-pill.is-active {
+    background: var(--navy);
+    border-color: var(--navy);
+    color: var(--white);
+}
+
+.mitra-partner-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.mitra-partner-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 22px;
+    box-shadow: 0 8px 20px -16px rgba(0, 33, 71, 0.2);
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.mitra-partner-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+}
+
+.mitra-partner-card[hidden] {
+    display: none;
+}
+
+.mitra-partner-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.mitra-partner-logo {
+    width: 50px;
+    border-radius: 2px;
+    background: var(--white);
+    border: 1px solid var(--bg-soft-2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex: none;
+}
+
+.mitra-partner-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+
+.mitra-partner-logo-fallback {
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: var(--bg-soft-2);
+    color: var(--navy-light);
+    font-family: var(--font-judul);
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 0.01em;
+}
+
+.mitra-status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--leaf-700);
+    background: #e8f7ef;
+    padding: 5px 11px;
+    border-radius: 999px;
+}
+
+.mitra-status-badge i {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--leaf-600);
+    display: inline-block;
+}
+
+.mitra-partner-card h3 {
+    font-size: 17px;
+    font-weight: 800;
+    margin-bottom: 3px;
+}
+
+.mitra-partner-sub {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+}
+
+.mitra-cat-tag {
+    display: inline-block;
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--navy-light);
+    background: var(--bg-soft-2);
+    padding: 5px 12px;
+    border-radius: 999px;
+    margin-bottom: 12px;
+}
+
+.mitra-cat-tag--blue {
+    color: var(--navy-light);
+    background: #e3ecff;
+}
+
+.mitra-cat-tag--green {
+    color: var(--leaf-700);
+    background: #dcf5e7;
+}
+
+.mitra-cat-tag--purple {
+    color: var(--grape-700);
+    background: #f2e4fb;
+}
+
+.mitra-cat-tag--red {
+    color: var(--ember-700);
+    background: #fbe4e4;
+}
+
+.mitra-cat-tag--amber {
+    color: #b45309;
+    background: #fef1d8;
+}
+
+.mitra-cat-tag--navy {
+    color: var(--navy);
+    background: var(--bg-soft-2);
+}
+
+.mitra-partner-desc {
+    font-size: 13.5px;
+    color: var(--text);
+    line-height: 1.6;
+    margin-bottom: 18px;
+}
+
+.mitra-partner-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    border-top: 1px solid var(--bg-soft-2);
+    padding-top: 14px;
+}
+
+.mitra-partner-footer span {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.mitra-partner-footer svg {
+    width: 13px;
+    height: 13px;
+    flex: none;
+}
+
+.mitra-empty-state {
+    text-align: center;
+    color: var(--text-muted);
+    padding: 40px 0 0;
+}
+
+/* ==========================================================================
+   5. MENGAPA BERKOLABORASI
+   ========================================================================== */
+.mitra-alasan {
+    background: var(--bg-soft);
+}
+
+.mitra-alasan-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.mitra-alasan-card {
+    background: var(--white);
+    border-radius: 18px;
+    padding: 26px 22px;
+    box-shadow: var(--shadow);
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.mitra-alasan-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+}
+
+.mitra-alasan-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.mitra-alasan-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.mitra-alasan-icon--navy {
+    background: #002147;
+    color: #000A1E;
+}
+
+.mitra-alasan-icon--amber {
+    background: #F5E707;
+    color: var(--amber);
+}
+
+.mitra-alasan-icon--indigo {
+    background: #E5EEFF;
+    color: #000A1E;
+}
+
+.mitra-alasan-icon--leaf {
+    background: #DCE9FF;
+    color: #000A1E;
+}
+
+.mitra-alasan-icon--ember {
+    background: #00243B;
+    color: #000A1E;
+}
+
+.mitra-alasan-card h3 {
+    font-size: 17px;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.mitra-alasan-card p {
+    color: var(--text-muted);
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+.mitra-alasan-tag {
+    display: inline-block;
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--navy);
+    background: var(--bg-soft-2);
+    padding: 5px 12px;
+    border-radius: 999px;
+}
+
+/* ==========================================================================
+   6. GALERI
+   ========================================================================== */
+.mitra-galeri-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.mitra-galeri-item {
+    margin: 0;
+    border-radius: 18px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: var(--shadow);
+}
+
+.mitra-galeri-item img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    display: block;
+}
+
+.mitra-galeri-item figcaption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 16px;
+    font-family: var(--font-judul);
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--white);
+    background: linear-gradient(180deg, transparent, rgba(0, 15, 35, 0.82));
+}
+
+.mitra-galeri-item--empty {
+    background: linear-gradient(135deg, var(--bg-soft-3), var(--bg-soft-2));
+}
+
+.mitra-galeri-item--empty img {
+    display: none;
+}
+
+.mitra-galeri-item--empty figcaption {
+    position: static;
+    background: none;
+    color: var(--navy);
+    padding: 90px 16px 16px;
+}
+
+/* ==========================================================================
+   7. CTA (DARK)
+   ========================================================================== */
+.mitra-cta {
+    background: var(--navy-dark);
+    background-image:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(30, 64, 175, 0.35),
+            transparent 55%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(245, 231, 7, 0.08),
+            transparent 50%
+        );
+}
+
+.mitra-cta-inner {
+    text-align: center;
+    max-width: 720px;
+}
+
+.mitra-cta-badge {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--yellow);
+    background: rgba(245, 231, 7, 0.12);
+    border: 1px solid rgba(245, 231, 7, 0.3);
+    padding: 7px 16px;
+    border-radius: 999px;
+    margin-bottom: 22px;
+}
+
+.mitra-cta h2 {
+    color: var(--white);
+    font-size: 36px;
+    font-weight: 800;
+    font-family: var(--font-judul);
+    margin-bottom: 16px;
+}
+
+.mitra-cta p {
+    color: #aab8d1;
+    font-size: 15.5px;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+.mitra-cta-info {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 48px;
+    background-color: #00243b82;
+    padding: 24px;
+    border-radius: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mitra-cta-info > div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    text-align: left;
+}
+
+.mitra-cta-info-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #7c8bab;
+}
+
+.mitra-cta-info-value {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: var(--white);
+}
+
+/* =========================================================
+   MODERN ANIMATION SYSTEM
+   ========================================================= */
+
+.mitra-page {
+    --scroll-progress: 0%;
+}
+
+
+/* =========================================================
+   SCROLL REVEAL
+   ========================================================= */
+
+.mitra-reveal {
+    opacity: 0;
+    transform: translateY(35px);
+    transition:
+        opacity 0.75s cubic-bezier(.22, 1, .36, 1),
+        transform 0.75s cubic-bezier(.22, 1, .36, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+}
+
+.mitra-reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* Hero */
+.mitra-hero-copy.mitra-reveal {
+    transform: translateX(-35px);
+}
+
+.mitra-hero-visual.mitra-reveal {
+    transform: translateX(35px);
+}
+
+.mitra-hero-copy.mitra-reveal.is-visible,
+.mitra-hero-visual.mitra-reveal.is-visible {
+    transform: translateX(0);
+}
+
+
+/* =========================================================
+   CARD HOVER
+   ========================================================= */
+
+.mitra-skema-card,
+.mitra-alasan-card,
+.mitra-partner-card {
+    position: relative;
+    transform-style: preserve-3d;
+    will-change: transform;
+    transition:
+        transform 0.35s cubic-bezier(.22, 1, .36, 1),
+        box-shadow 0.35s ease;
+}
+
+
+/* Cursor glow */
+.mitra-skema-card::after,
+.mitra-alasan-card::after,
+.mitra-partner-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: inherit;
+
+    background:
+        radial-gradient(
+            180px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+            rgba(245, 158, 11, 0.10),
+            transparent 65%
+        );
+
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.mitra-skema-card:hover::after,
+.mitra-alasan-card:hover::after,
+.mitra-partner-card:hover::after {
+    opacity: 1;
+}
+
+
+/* =========================================================
+   FILTER ANIMATION
+   ========================================================= */
+
+.mitra-partner-card[hidden] {
+    display: none !important;
+}
+
+.mitra-filter-show {
+    animation:
+        mitraFilterIn
+        0.5s
+        cubic-bezier(.22, 1, .36, 1)
+        var(--filter-delay, 0ms)
+        both;
+}
+
+@keyframes mitraFilterIn {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(20px)
+            scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+}
+
+
+/* =========================================================
+   HERO CARD
+   ========================================================= */
+
+.mitra-hero-card {
+    transform-style: preserve-3d;
+    will-change: transform;
+    transition:
+        transform 0.5s cubic-bezier(.22, 1, .36, 1),
+        box-shadow 0.5s ease;
+}
+
+
+/* =========================================================
+   PROGRESS BAR
+   ========================================================= */
+
+.mitra-progress-bar {
+    transition:
+        width 1.6s cubic-bezier(.22, 1, .36, 1);
+}
+
+
+/* =========================================================
+   MAGNETIC BUTTON
+   ========================================================= */
+
+.mitra-btn {
+    will-change: transform;
+    transition:
+        transform 0.25s cubic-bezier(.22, 1, .36, 1),
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+}
+
+
+/* =========================================================
+   HERO MOBILE FLOAT
+   ========================================================= */
+
+.mitra-mobile-float {
+    animation:
+        mitraFloat
+        5s
+        ease-in-out
+        infinite;
+}
+
+@keyframes mitraFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+
+}
+
+
+/* =========================================================
+   STATUS BADGE
+   ========================================================= */
+
+.mitra-status-badge {
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.mitra-partner-card:hover .mitra-status-badge {
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   LOGO HOVER
+   ========================================================= */
+
+.mitra-partner-logo img {
+    transition:
+        transform 0.4s cubic-bezier(.22, 1, .36, 1),
+        filter 0.4s ease;
+}
+
+.mitra-partner-card:hover .mitra-partner-logo img {
+    transform: scale(1.08);
+}
+
+
+/* =========================================================
+   ICON HOVER
+   ========================================================= */
+
+.mitra-skema-icon,
+.mitra-alasan-icon,
+.mitra-stat-icon {
+    transition:
+        transform 0.4s cubic-bezier(.22, 1, .36, 1);
+}
+
+.mitra-skema-card:hover .mitra-skema-icon,
+.mitra-alasan-card:hover .mitra-alasan-icon,
+.mitra-stat-card:hover .mitra-stat-icon {
+    transform:
+        translateY(-4px)
+        rotate(-3deg)
+}
+
+
+/* =========================================================
+   FILTER BUTTON
+   ========================================================= */
+
+.mitra-pill {
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+}
+
+.mitra-pill:hover {
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   CTA
+   ========================================================= */
+
+.mitra-cta {
+    overflow: hidden;
+    position: relative;
+}
+
+.mitra-cta::before {
+    content: "";
+    position: absolute;
+
+    width: 450px;
+    height: 450px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(245, 158, 11, 0.13),
+            transparent 70%
+        );
+
+    top: -250px;
+    right: -150px;
+
+    pointer-events: none;
+
+    animation:
+        mitraCtaGlow
+        7s
+        ease-in-out
+        infinite alternate;
+}
+
+@keyframes mitraCtaGlow {
+
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.2);
+    }
+
+}
+
+
+/* =========================================================
+   SCROLL PROGRESS
+   ========================================================= */
+
+.mitra-page::before {
+    content: "";
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: var(--scroll-progress);
+    height: 3px;
+
+    background: #f59e0b;
+
+    z-index: 9999;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+.mitra-pill:focus-visible,
+.mitra-btn:focus-visible {
+    outline: 3px solid rgba(245, 158, 11, 0.45);
+    outline-offset: 4px;
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .mitra-reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    .mitra-mobile-float,
+    .mitra-cta::before {
+        animation: none;
+    }
+
+    .mitra-skema-card,
+    .mitra-alasan-card,
+    .mitra-partner-card,
+    .mitra-btn,
+    .mitra-hero-card {
+        transition: none;
+        transform: none !important;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .mitra-skema-card:hover,
+    .mitra-alasan-card:hover,
+    .mitra-partner-card:hover {
+        transform: translateY(-3px);
+    }
+
+    .mitra-page::before {
+        height: 2px;
+    }
+
+}
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .mitra-hero-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .mitra-hero-visual {
+        order: -1;
+    }
+
+    .mitra-hero-card {
+        max-width: 480px;
+    }
+
+    .mitra-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .mitra-skema-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .mitra-partner-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .mitra-alasan-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .mitra-galeri-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .mitra-hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .mitra-hero-actions .mitra-btn {
+        justify-content: center;
+    }
+
+    .mitra-daftar-header {
+        align-items: flex-start;
+    }
+
+    .mitra-cta-info {
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+    }
+
+    .mitra-cta-info > div {
+        text-align: center;
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .mitra-stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .mitra-skema-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .mitra-partner-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .mitra-alasan-grid {
+        grid-template-columns: 1fr;
+    }
+}
+

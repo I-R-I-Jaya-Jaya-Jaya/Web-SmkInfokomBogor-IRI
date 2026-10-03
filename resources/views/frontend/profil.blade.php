@@ -106,7 +106,7 @@ Profil SMK INFOKOM Kota Bogor sebagai sekolah menengah kejuruan pusat keunggulan
           </p>
 
           <p>
-            Di kampus ini, setiap siswa diasah untuk berpikir logis sistematis, menguasai standar
+            Di Sekolah ini, setiap siswa diasah untuk berpikir logis sistematis, menguasai standar
             teknologi terkini (MikroTik, Cisco, Adobe, Cloud Native), dan yang paling fundamental:
             memiliki etika kerja tangguh, kepemimpinan adaptif, dan empati sosial. Kami bangga
             menjadi wadah lahirnya ribuan profesional muda yang kini berkarya di korporasi nasional,

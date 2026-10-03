@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Fasilitas Kampus - SMK INFOKOM BOGOR')
+@section('title', 'Fasilitas Sekolah - SMK INFOKOM BOGOR')
 @section('description', 'Fasilitas SMK INFOKOM Kota Bogor: laboratorium TKJ, RPL, DKV, dan PSPT, ruang kelas,
 perpustakaan, mushola, kantin, dan lapangan.')
 
@@ -274,7 +274,7 @@ perpustakaan, mushola, kantin, dan lapangan.')
                     </div>
                     <div class="fas-card__body">
                         <h3 class="fas-card__title">Lapangan Olahraga &amp; Upacara</h3>
-                        <p class="fas-card__desc">Area terbuka di kampus untuk upacara bendera, kegiatan olahraga,
+                        <p class="fas-card__desc">Area terbuka di Sekolah untuk upacara bendera, kegiatan olahraga,
                             parkir kendaraan, dan kegiatan sekolah di luar ruangan.</p>
                         <div class="fas-card__foot">
                             <p class="fas-card__meta">Jumlah: <strong>1 Lapangan</strong></p>
@@ -385,7 +385,7 @@ perpustakaan, mushola, kantin, dan lapangan.')
                 <h2 id="cta-title" class="fas-cta__title">Ingin Melihat Langsung Fasilitas Sekolah Kami?
                 </h2>
                 <p class="fas-cta__desc">
-                    Calon siswa dan orang tua dipersilakan mengenal lebih dekat kampus SMK INFOKOM Kota Bogor.
+                    Calon siswa dan orang tua dipersilakan mengenal lebih dekat Sekolah SMK INFOKOM Kota Bogor.
                     Hubungi humas sekolah untuk menanyakan jadwal kunjungan atau informasi pendaftaran.
                 </p>
                 <div class="fas-cta__actions">

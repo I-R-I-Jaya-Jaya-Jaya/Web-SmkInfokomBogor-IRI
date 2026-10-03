@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Galeri Kampus & Aktivitas Siswa — SMK INFOKOM Kota Bogor
+    Galeri Sekolah & Aktivitas Siswa — SMK INFOKOM Kota Bogor
 @endsection
 
 @section('description')
@@ -24,7 +24,7 @@
 
       <div class="galeri-hero-text">
         <h1 class="galeri-hero-title">
-          Galeri Kampus &amp; Aktivitas Siswa
+          Galeri Sekolah Infokom &amp; Aktivitas Siswa
         </h1>
 
         <p class="galeri-hero-desc">
@@ -53,132 +53,359 @@
     </div>
   </section>
 
+<section class="galeri-filter-section">
+  <div class="galeri-container">
 
-  <!-- ============ FILTER KATEGORI ============ -->
-  <section class="galeri-filter-section">
-    <div class="galeri-container">
+    <div class="galeri-filter-list">
 
-      <div class="galeri-filter-list">
-        <a href="galeri.html" class="galeri-filter-chip active">Semua</a>
-        <a href="galeri.html?kategori=praktikum" class="galeri-filter-chip">Praktikum</a>
-        <a href="galeri.html?kategori=prestasi" class="galeri-filter-chip">Prestasi</a>
-        <a href="galeri.html?kategori=kunjungan" class="galeri-filter-chip">Kunjungan Industri</a>
-        <a href="galeri.html?kategori=kegiatan" class="galeri-filter-chip">Kegiatan Sekolah</a>
-        <a href="galeri.html?kategori=karya" class="galeri-filter-chip">Karya Siswa</a>
-      </div>
+      <a href="{{ url('galeri') }}" class="galeri-filter-chip active">
+        Semua
+      </a>
 
-      <p class="galeri-filter-count">
-        <img src="IMG/galeri/icon-grid.svg" alt="">
-        Menampilkan 24 Koleksi
-      </p>
+      <a href="{{ url('galeri?kategori=praktikum') }}" class="galeri-filter-chip">
+        Praktikum
+      </a>
 
-    </div>
-  </section>
+      <a href="{{ url('galeri?kategori=prestasi') }}" class="galeri-filter-chip">
+        Prestasi
+      </a>
 
+      <a href="{{ url('galeri?kategori=kunjungan') }}" class="galeri-filter-chip">
+        Kunjungan Industri
+      </a>
 
-  <!-- ============ GRID GALERI ============ -->
-  <section class="galeri-grid-section">
-    <div class="galeri-container">
+      <a href="{{ url('galeri?kategori=kegiatan') }}" class="galeri-filter-chip">
+        Kegiatan Sekolah
+      </a>
 
-      <!-- Featured (besar) -->
-      <div class="galeri-grid galeri-grid-featured">
-        <article class="galeri-card galeri-card-lg">
-          <div class="galeri-card-image">
-            <span class="galeri-badge">Praktikum</span>
-            <img src="IMG/galeri/featured-1.jpg" alt="Praktikum Lab TKJ" loading="lazy">
-          </div>
-          <div class="galeri-card-content">
-            <h3>Praktikum Konfigurasi Jaringan Enterprise</h3>
-            <p>Siswa jurusan TKJ melakukan instalasi dan konfigurasi router MikroTik di laboratorium jaringan.</p>
-          </div>
-        </article>
-
-        <article class="galeri-card galeri-card-lg">
-          <div class="galeri-card-image">
-            <span class="galeri-badge">Prestasi</span>
-            <img src="IMG/galeri/featured-2.jpg" alt="Juara LKS" loading="lazy">
-          </div>
-          <div class="galeri-card-content">
-            <h3>Juara 1 LKS Provinsi Jawa Barat</h3>
-            <p>Tim RPL SMK INFOKOM meraih medali emas pada Lomba Kompetensi Siswa tingkat provinsi.</p>
-          </div>
-        </article>
-      </div>
-
-      <!-- Grid 3 kolom -->
-      <div class="galeri-grid galeri-grid-3">
-        <article class="galeri-card">
-          <div class="galeri-card-image">
-            <span class="galeri-badge">Kegiatan Sekolah</span>
-            <img src="IMG/galeri/galeri-1.jpg" alt="Upacara Bendera" loading="lazy">
-          </div>
-          <div class="galeri-card-content">
-            <h3>Upacara Bendera Senin Pagi</h3>
-            <p>Kegiatan rutin penanaman disiplin dan nasionalisme.</p>
-          </div>
-        </article>
-
-        <article class="galeri-card">
-          <div class="galeri-card-image">
-            <span class="galeri-badge">Karya Siswa</span>
-            <img src="IMG/galeri/galeri-2.jpg" alt="Karya Multimedia" loading="lazy">
-          </div>
-          <div class="galeri-card-content">
-            <h3>Produksi Video Sinematik Siswa</h3>
-            <p>Hasil karya jurusan Multimedia untuk kompetisi film pendek.</p>
-          </div>
-        </article>
-
-        <article class="galeri-card">
-          <div class="galeri-card-image">
-            <span class="galeri-badge">Kunjungan Industri</span>
-            <img src="IMG/galeri/galeri-3.jpg" alt="Kunjungan Industri" loading="lazy">
-          </div>
-          <div class="galeri-card-content">
-            <h3>Kunjungan ke Data Center Telkom</h3>
-            <p>Siswa melihat langsung infrastruktur cloud dan jaringan skala nasional.</p>
-          </div>
-        </article>
-      </div>
-
-      <div class="galeri-grid galeri-grid-3">
-        <article class="galeri-card">
-          <div class="galeri-card-image">
-            <span class="galeri-badge">Praktikum</span>
-            <img src="IMG/galeri/galeri-4.jpg" alt="Studio TV" loading="lazy">
-          </div>
-          <div class="galeri-card-content">
-            <h3>Latihan Live Broadcasting Studio</h3>
-            <p>Siswa PSPT berlatih switcher multi-kamera dan lighting studio.</p>
-          </div>
-        </article>
-
-        <article class="galeri-card">
-          <div class="galeri-card-image">
-            <span class="galeri-badge">Prestasi</span>
-            <img src="IMG/galeri/galeri-5.jpg" alt="Hackathon" loading="lazy">
-          </div>
-          <div class="galeri-card-content">
-            <h3>Finalis Hackathon Nasional</h3>
-            <p>Tim RPL masuk final kompetisi coding tingkat nasional.</p>
-          </div>
-        </article>
-
-        <article class="galeri-card">
-          <div class="galeri-card-image">
-            <span class="galeri-badge">Kegiatan Sekolah</span>
-            <img src="IMG/galeri/galeri-6.jpg" alt="Sholat Dhuha" loading="lazy">
-          </div>
-          <div class="galeri-card-content">
-            <h3>Sholat Dhuha &amp; Kajian Jumat Berkah</h3>
-            <p>Pembinaan karakter spiritual setiap Jumat pagi.</p>
-          </div>
-        </article>
-      </div>
+      <a href="{{ url('galeri?kategori=karya') }}" class="galeri-filter-chip">
+        Karya Siswa
+      </a>
 
     </div>
-  </section>
 
+
+    <p class="galeri-filter-count">
+
+      <img
+        src="{{ asset('IMG/galeri/icon-grid.svg') }}"
+        alt=""
+      >
+
+      Menampilkan 4 Koleksi
+
+    </p>
+
+  </div>
+</section>
+
+
+
+<!-- ============ GRID GALERI ============ -->
+<section class="galeri-grid-section">
+  <div class="galeri-container">
+
+
+    <!-- ============ FEATURED ============ -->
+    <div class="galeri-grid galeri-grid-featured">
+
+
+      <!-- Featured 1 -->
+      <article class="galeri-card galeri-card-lg">
+
+        <div class="galeri-card-image">
+
+          <span class="galeri-badge">
+            Praktikum
+          </span>
+
+          <img
+            src="{{ asset('IMG/galeri/component/ujiantkj.png') }}"
+            alt="Praktikum TKJ"
+            loading="lazy"
+          >
+
+        </div>
+
+
+        <div class="galeri-card-content">
+
+          <h3>
+            Praktikum Konfigurasi Jaringan Enterprise
+          </h3>
+
+          <p>
+            Siswa jurusan TKJ melakukan instalasi dan konfigurasi
+            router MikroTik serta praktik jaringan di laboratorium.
+          </p>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- Featured 2 -->
+      <article class="galeri-card galeri-card-lg">
+
+        <div class="galeri-card-image">
+
+          <span class="galeri-badge">
+            Prestasi
+          </span>
+
+          <img
+            src="{{ asset('IMG/galeri/component/juara1.png') }}"
+            alt="Juara 1 Web Design"
+            loading="lazy"
+          >
+
+        </div>
+
+
+        <div class="galeri-card-content">
+
+          <h3>
+            Juara 1 Web Design
+          </h3>
+
+          <p>
+            Tim RPL SMK INFOKOM meraih prestasi melalui kompetisi
+            pengembangan website dan menunjukkan kemampuan siswa
+            di bidang teknologi.
+          </p>
+
+        </div>
+
+      </article>
+
+    </div>
+
+
+
+    <!-- ============ GRID 3 KOLOM ============ -->
+    <div class="galeri-grid galeri-grid-3">
+
+
+      <!-- Card 3 -->
+      <article class="galeri-card">
+
+        <div class="galeri-card-image">
+
+          <span class="galeri-badge">
+            Kegiatan Sekolah
+          </span>
+
+          <img
+            src="{{ asset('IMG/galeri/component/kegiatanupacara.jpeg') }}"
+            alt="Upacara Bendera"
+            loading="lazy"
+          >
+
+        </div>
+
+
+        <div class="galeri-card-content">
+
+          <h3>
+            Upacara Bendera Senin Pagi
+          </h3>
+
+          <p>
+            Kegiatan rutin sekolah sebagai bentuk penanaman
+            disiplin, tanggung jawab, dan nasionalisme siswa.
+          </p>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- Card 4 -->
+      <article class="galeri-card">
+
+        <div class="galeri-card-image">
+
+          <span class="galeri-badge">
+            Akademik
+          </span>
+
+          <img
+            src="{{ asset('IMG/galeri/component/ujiansekolahrpl.jpg') }}"
+            alt="Ujian Sekolah RPL"
+            loading="lazy"
+          >
+
+        </div>
+
+
+        <div class="galeri-card-content">
+
+          <h3>
+            Ujian Sekolah Siswa RPL
+          </h3>
+
+          <p>
+            Siswa RPL mengikuti kegiatan ujian sekolah sebagai
+            bagian dari proses evaluasi pembelajaran dan kompetensi.
+          </p>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- Card 5 -->
+      <article class="galeri-card">
+
+        <div class="galeri-card-image">
+
+          <span class="galeri-badge">
+            Praktikum
+          </span>
+
+          <img
+            src="{{ asset('IMG/galeri/component/ujiantkj.png') }}"
+            alt="Ujian Praktikum TKJ"
+            loading="lazy"
+          >
+
+        </div>
+
+
+        <div class="galeri-card-content">
+
+          <h3>
+            Praktikum dan Ujian Kompetensi TKJ
+          </h3>
+
+          <p>
+            Siswa TKJ mengaplikasikan kemampuan jaringan melalui
+            praktik dan pengujian kompetensi di laboratorium.
+          </p>
+
+        </div>
+
+      </article>
+
+    </div>
+
+
+
+    <!-- ============ GRID TAMBAHAN ============ -->
+    <div class="galeri-grid galeri-grid-3">
+
+
+      <!-- Card 6 -->
+      <article class="galeri-card">
+
+        <div class="galeri-card-image">
+
+          <span class="galeri-badge">
+            Prestasi
+          </span>
+
+          <img
+            src="{{ asset('IMG/galeri/component/juara1.png') }}"
+            alt="Prestasi Juara 1"
+            loading="lazy"
+          >
+
+        </div>
+
+
+        <div class="galeri-card-content">
+
+          <h3>
+            Prestasi Juara 1 Siswa SMK INFOKOM
+          </h3>
+
+          <p>
+            Dokumentasi prestasi siswa dalam kompetisi sebagai
+            bentuk apresiasi terhadap pencapaian dan kreativitas.
+          </p>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- Card 7 -->
+      <article class="galeri-card">
+
+        <div class="galeri-card-image">
+
+          <span class="galeri-badge">
+            Kegiatan Sekolah
+          </span>
+
+          <img
+            src="{{ asset('IMG/galeri/component/kegiatanupacara.jpeg') }}"
+            alt="Kegiatan Upacara Sekolah"
+            loading="lazy"
+          >
+
+        </div>
+
+
+        <div class="galeri-card-content">
+
+          <h3>
+            Kegiatan Upacara Sekolah
+          </h3>
+
+          <p>
+            Dokumentasi kegiatan upacara sebagai bagian dari
+            pembentukan karakter dan kedisiplinan siswa.
+          </p>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- Card 8 -->
+      <article class="galeri-card">
+
+        <div class="galeri-card-image">
+
+          <span class="galeri-badge">
+            Akademik
+          </span>
+
+          <img
+            src="{{ asset('IMG/galeri/component/ujiansekolahrpl.jpg') }}"
+            alt="Kegiatan Ujian RPL"
+            loading="lazy"
+          >
+
+        </div>
+
+
+        <div class="galeri-card-content">
+
+          <h3>
+            Evaluasi Kompetensi Siswa RPL
+          </h3>
+
+          <p>
+            Kegiatan evaluasi pembelajaran siswa RPL melalui
+            ujian dan praktik sesuai kompetensi keahlian.
+          </p>
+
+        </div>
+
+      </article>
+
+    </div>
+
+
+  </div>
+</section>
 
   <!-- ============ TUR VIRTUAL ============ -->
   <section class="galeri-video-section">
@@ -188,7 +415,7 @@
         <div>
           <p class="galeri-eyebrow-dark">
             <img src="IMG/galeri/icon-video.svg" alt="">
-            SOROTAN VIDEO KAMPUS
+            SOROTAN VIDEO SEKOLAH 
           </p>
           <h2>Jelajahi Fasilitas Melalui Tur Virtual</h2>
         </div>
@@ -248,10 +475,7 @@
     <div class="galeri-container galeri-cta-inner">
 
       <div class="galeri-cta-text">
-        <span class="galeri-cta-badge">
-          <img src="IMG/galeri/icon/icon-check.svg" alt="">
-          DOKUMENTASI TERBUKA
-        </span>
+     
 
         <h2>
           Ingin Melihat Karya Lengkap &amp; Keseharian Siswa Secara Real-Time?
@@ -272,7 +496,7 @@
 
         <a href="kontak.html" class="galeri-cta-btn galeri-cta-btn-outline">
           <img src="IMG/galeri/icon/icon-maps.svg" alt="">
-          Jadwal Kunjungan Kampus
+          Jadwal Kunjungan Sekolah
         </a>
       </div>
 

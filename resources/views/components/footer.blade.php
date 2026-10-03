@@ -105,7 +105,7 @@
         <!-- Kontak (DINAMIS) -->
         <div>
             <h2 class="footer-title">
-                Kampus &amp; Kontak
+                Sekolah &amp; Kontak
             </h2>
 
             <ul class="footer-contact">

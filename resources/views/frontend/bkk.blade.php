@@ -391,7 +391,7 @@ industri, termasuk program magang & kerja ke Jepang.')
                 </div>
                 <h3>Penyaluran Kerja</h3>
                 <p>Fasilitasi psikotes, tes teknis kompetensi, dan wawancara kerja yang diselenggarakan langsung di
-                    lingkungan kampus.</p>
+                    lingkungan Sekolah.</p>
             </div>
 
             {{-- 3. Pelatihan Karir --}}
