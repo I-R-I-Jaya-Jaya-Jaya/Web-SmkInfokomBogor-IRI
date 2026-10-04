@@ -3458,6 +3458,40 @@ body {
   .ppdb-box {
     padding: 44px 36px;
   }
+
+  /* Footer responsive: padding kiri-kanan 25px */
+  .footer-grid {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+  .footer-bottom-inner {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+
+  /* Hero: rata tengah di tablet & mobile */
+  .hero-container {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+  .hero-content {
+    margin-inline: auto;
+    max-width: 100%;
+  }
+  .hero-description {
+    margin-inline: auto;
+  }
+  .hero-actions {
+    justify-content: center;
+    align-items: center;
+  }
+  .hero-features {
+    justify-content: center;
+  }
+  .hero-badge {
+    margin-inline: auto;
+  }
 }
 
 /* ---------- HP (<= 639px) ---------- */
@@ -3515,11 +3549,16 @@ body {
   /* ===== Hero ===== */
   .hero-container {
     padding: 72px 16px 110px;
+    text-align: center;
+  }
+  .hero-content {
+    margin-inline: auto;
   }
   .hero-badge {
     font-size: 11px;
     letter-spacing: 1px;
     padding: 6px 12px;
+    margin-inline: auto;
   }
   .hero-title {
     margin-top: 20px;
@@ -3529,14 +3568,24 @@ body {
   }
   .hero-description {
     margin-top: 18px;
+    margin-inline: auto;
     font-size: 16px;
     line-height: 1.65;
   }
   .hero-actions {
     margin-top: 28px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-actions .btn {
+    width: 100%;
+    max-width: 320px;
+    justify-content: center;
   }
   .hero-features {
     margin-top: 32px;
+    justify-content: center;
   }
 
   /* ===== Statistik ===== */
@@ -3635,11 +3684,15 @@ body {
   .footer-grid {
     gap: 32px;
     padding-block: 48px;
+    padding-left: 25px;
+    padding-right: 25px;
   }
   .footer-bottom-inner {
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
   }
   .footer-legal {
     gap: 8px 20px;

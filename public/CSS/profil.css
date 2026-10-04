@@ -1525,15 +1525,15 @@ gap: 8px;
   pointer-events: none;
 }
 
-.footer {
+.gaada-- {
   background-color: #101828;
   color: rgba(255, 255, 255, 0.7);
 }
 
 
-/* ===== Footer Grid ===== */
+/* ===== gaada-- Grid ===== */
 
-.footer-grid {
+.gaada---grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 40px;
@@ -1543,24 +1543,24 @@ gap: 8px;
 
 /* ===== Brand ===== */
 
-.footer-brand {
+.gaada---brand {
   display: flex;
   align-items: center;
   gap: 12px;
   text-decoration: none;
 }
 
-.footer-brand-text {
+.gaada---brand-text {
   line-height: 1.2;
 }
 
-.footer-school-name {
+.gaada---school-name {
   display: block;
   color: #ffffff;
   font: 700 18px/1.2 var(--font-judul);
 }
 
-.footer-city {
+.gaada---city {
   display: block;
 
   margin-top: 3px;
@@ -1576,7 +1576,7 @@ gap: 8px;
 
 /* ===== Description ===== */
 
-.footer-description {
+.gaada---description {
   margin-top: 20px;
   color: #708AB5;
   line-height: 1.7;
@@ -1586,7 +1586,7 @@ gap: 8px;
 
 /* ===== Accreditation ===== */
 
-.footer-accreditation {
+.gaada---accreditation {
   margin-top: 16px;
  display: inline-flex;
     align-items: center;
@@ -1601,7 +1601,7 @@ gap: 8px;
 }
 
 
-.footer-accreditation span {
+.gaada---accreditation span {
   width: 6px;
   height: 6px;
 
@@ -1611,9 +1611,9 @@ gap: 8px;
 }
 
 
-/* ===== Footer Title ===== */
+/* ===== gaada-- Title ===== */
 
-.footer-title {
+.gaada---title {
   margin: 0;
   font: 700 18px/1.4 var(--font-judul);
 
@@ -1621,9 +1621,9 @@ gap: 8px;
 }
 
 
-/* ===== Footer Links ===== */
+/* ===== gaada-- Links ===== */
 
-.footer-links {
+.gaada---links {
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -1635,21 +1635,21 @@ gap: 8px;
   font: 400 13px/1.7 var(--font-teks);
 }
 
-.footer-links a {
+.gaada---links a {
   color: #708AB5;
   text-decoration: none;
 
   transition: 0.25s;
 }
 
-.footer-links a:hover {
+.gaada---links a:hover {
   color: #ffffff;
 }
 
 
 /* ===== Contact ===== */
 
-.footer-contact {
+.gaada---contact {
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -1663,13 +1663,13 @@ font: 400 13px / 1.7 var(--font-teks);
   
 }
 
-.footer-contact li {
+.gaada---contact li {
   display: flex;
   align-items: flex-start;
   gap: 12px;
 }
 
-.footer-contact svg {
+.gaada---contact svg {
   width: 16px;
   height: 16px;
 
@@ -1683,21 +1683,21 @@ font: 400 13px / 1.7 var(--font-teks);
 
 
 
-.footer-contact a:hover {
+.gaada---contact a:hover {
   color: #ffffff;
 }
 
 
 /* ===== Social Media ===== */
 
-.footer-social {
+.gaada---social {
   display: flex;
   gap: 12px;
 
   margin-top: 24px;
 }
 
-.footer-social a {
+.gaada---social a {
   width: 36px;
   height: 36px;
 
@@ -1712,12 +1712,12 @@ font: 400 13px / 1.7 var(--font-teks);
   transition: 0.25s;
 }
 
-.footer-social a:hover {
+.gaada---social a:hover {
   border-color: #F5E707;
   color: #F5E707;
 }
 
-.footer-social svg {
+.gaada---social svg {
   width: 16px;
   height: 16px;
 
@@ -1727,13 +1727,13 @@ font: 400 13px / 1.7 var(--font-teks);
 }
 
 
-/* ===== Footer Bottom ===== */
+/* ===== gaada-- Bottom ===== */
 
-.footer-bottom {
+.gaada---bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.footer-bottom-inner {
+.gaada---bottom-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1749,20 +1749,20 @@ font: 400 13px / 1.7 var(--font-teks);
 
 /* ===== Legal Links ===== */
 
-.footer-legal {
+.gaada---legal {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
 }
 
-.footer-legal a {
+.gaada---legal a {
   color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
 
   transition: 0.25s;
 }
 
-.footer-legal a:hover {
+.gaada---legal a:hover {
   color: #ffffff;
 }
 
@@ -1898,8 +1898,8 @@ font: 400 13px / 1.7 var(--font-teks);
 
 /* ==========================================================================
    RESPONSIVE MOBILE (ditambahkan)
-   profil.css dimuat setelah style.css dan menimpa aturan navbar/footer-nya.
-   Blok ini mengembalikan perilaku mobile (hamburger, footer 1 kolom, dll).
+   profil.css dimuat setelah style.css dan menimpa aturan navbar/gaada---nya.
+   Blok ini mengembalikan perilaku mobile (hamburger, gaada-- 1 kolom, dll).
    Hanya aktif pada layar kecil; tampilan desktop tidak berubah.
    ========================================================================== */
 
@@ -1924,23 +1924,23 @@ font: 400 13px / 1.7 var(--font-teks);
 }
 
 @media (max-width: 1023px) {
-  /* profil.css menimpa padding .shell menjadi 0, jadi isi footer menempel ke tepi layar */
-  .footer-grid,
-  .footer-bottom-inner {
+  /* profil.css menimpa padding .shell menjadi 0, jadi isi gaada-- menempel ke tepi layar */
+  .gaada---grid,
+  .gaada---bottom-inner {
     padding-inline: 24px;
   }
-  .footer-grid {
+  .gaada---grid {
     grid-template-columns: 1fr 1fr;
   }
 }
 
 @media (max-width: 639px) {
-  .footer-grid {
+  .gaada---grid {
     grid-template-columns: minmax(0, 1fr);
     gap: 32px;
     padding: 48px 20px;
   }
-  .footer-bottom-inner {
+  .gaada---bottom-inner {
     padding-inline: 20px;
   }
 
@@ -2021,9 +2021,9 @@ font: 400 13px / 1.7 var(--font-teks);
 
 
 /* ==========================================================================
-   RESPONSIVE MOBILE - NAVBAR & FOOTER (ditambahkan)
-   profil.css memuat ulang aturan navbar/footer yang menimpa style.css,
-   sehingga di HP menu desktop tampil, hamburger hilang, dan footer 4 kolom.
+   RESPONSIVE MOBILE - NAVBAR & gaada-- (ditambahkan)
+   profil.css memuat ulang aturan navbar/gaada-- yang menimpa style.css,
+   sehingga di HP menu desktop tampil, hamburger hilang, dan gaada-- 4 kolom.
    Semua aturan di bawah hanya aktif pada layar kecil.
    ========================================================================== */
 
@@ -2041,14 +2041,14 @@ font: 400 13px / 1.7 var(--font-teks);
     border: 1px solid rgba(0, 33, 71, 0.25);
   }
 
-  .footer-grid {
+  .gaada---grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 /* HP (<= 639px) */
 @media (max-width: 639px) {
-  .footer-grid {
+  .gaada---grid {
     grid-template-columns: minmax(0, 1fr);
     gap: 32px;
     padding: 48px 0;
