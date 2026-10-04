@@ -1895,3 +1895,183 @@ font: 400 13px / 1.7 var(--font-teks);
     grid-template-columns: 1fr;
   }
 }
+
+/* ==========================================================================
+   RESPONSIVE MOBILE (ditambahkan)
+   profil.css dimuat setelah style.css dan menimpa aturan navbar/footer-nya.
+   Blok ini mengembalikan perilaku mobile (hamburger, footer 1 kolom, dll).
+   Hanya aktif pada layar kecil; tampilan desktop tidak berubah.
+   ========================================================================== */
+
+@media (max-width: 1023px) {
+  /* Menu desktop disembunyikan, hamburger dimunculkan */
+  .nav-menu {
+    display: none;
+  }
+  .menu-toggle {
+    display: grid;
+    color: #002147;
+    background: #ffffff;
+    border: 1px solid rgba(0, 33, 71, 0.25);
+    flex-shrink: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .menu-toggle {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  /* profil.css menimpa padding .shell menjadi 0, jadi isi footer menempel ke tepi layar */
+  .footer-grid,
+  .footer-bottom-inner {
+    padding-inline: 24px;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 639px) {
+  .footer-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+    padding: 48px 20px;
+  }
+  .footer-bottom-inner {
+    padding-inline: 20px;
+  }
+
+  /* Label hero tidak boleh lebih lebar dari layar */
+  .profil-label {
+    width: auto;
+    max-width: 100%;
+    flex-wrap: wrap;
+  }
+  .profil-breadcrumb {
+    flex-wrap: wrap;
+    row-gap: 6px;
+  }
+  .profil-hero-text {
+    font-size: 16px;
+  }
+
+  /* Dekorasi tulisan "INFOKOM" di CTA jangan membuat halaman melebar */
+  .cta-box {
+    min-height: 0;
+    padding: 32px 22px;
+  }
+  .cta-decoration {
+    font-size: 100px;
+    right: -30px;
+    bottom: -20px;
+  }
+  .yuridis-grade {
+    font-size: 44px;
+  }
+}
+
+/* Section akreditasi: kolom tetap 333px membuat halaman melebar di tablet/HP */
+@media (max-width: 900px) {
+  .yuridis-box {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+    padding: 28px 24px;
+  }
+  .yuridis-main {
+    max-width: 280px;
+    margin-inline: auto;
+    width: 100%;
+  }
+  .yuridis-content,
+  .yuridis-grid,
+  .yuridis-grid div {
+    min-width: 0;
+  }
+}
+
+@media (max-width: 450px) {
+  .yuridis-box {
+    padding: 24px 16px;
+  }
+  .yuridis-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Navbar HP kecil: logo & tombol dipadatkan supaya tidak saling menimpa */
+@media (max-width: 479px) {
+  .logo-title {
+    font-size: 15px;
+  }
+  .logo-subtitle {
+    font-size: 10px;
+  }
+  .logo-box {
+    width: 36px;
+    height: 36px;
+  }
+  .nav-actions .btn-daftar {
+    padding: 9px 12px;
+    font-size: 12px;
+  }
+}
+
+
+/* ==========================================================================
+   RESPONSIVE MOBILE - NAVBAR & FOOTER (ditambahkan)
+   profil.css memuat ulang aturan navbar/footer yang menimpa style.css,
+   sehingga di HP menu desktop tampil, hamburger hilang, dan footer 4 kolom.
+   Semua aturan di bawah hanya aktif pada layar kecil.
+   ========================================================================== */
+
+/* Tablet & HP (<= 1023px): sembunyikan menu desktop, tampilkan hamburger */
+@media (max-width: 1023px) {
+  .nav-menu {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: grid;
+    flex-shrink: 0;
+    color: var(--navy);
+    background: #ffffff;
+    border: 1px solid rgba(0, 33, 71, 0.25);
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* HP (<= 639px) */
+@media (max-width: 639px) {
+  .footer-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+    padding: 48px 0;
+  }
+
+  .profil-hero h1 {
+    overflow-wrap: break-word;
+  }
+
+  .yuridis-box {
+    padding: 28px 22px;
+    gap: 28px;
+  }
+
+  .yuridis-grade {
+    font-size: 44px;
+  }
+
+  .cta-decoration {
+    font-size: 110px;
+  }
+
+  .misi-item > div {
+    min-width: 0;
+  }
+}

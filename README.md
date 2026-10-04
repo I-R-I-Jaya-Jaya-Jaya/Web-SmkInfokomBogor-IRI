@@ -1,58 +1,168 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Web SMK INFOKOM Kota Bogor
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Website resmi SMK INFOKOM Kota Bogor, dibangun dengan **Laravel** (PHP) dengan tampilan memakai HTML/Blade, Bootstrap 5, dan CSS/JS kustom. Tampilan sudah **responsive** untuk desktop, tablet, dan HP.
 
-## About Laravel
+## Fitur / Halaman
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+| Halaman | URL |
+|---|---|
+| Beranda | `/home` |
+| Profil Sekolah & Visi Misi | `/profil` |
+| Program Keahlian | `/program` |
+| Fasilitas | `/fasilitas` |
+| Galeri | `/galeri` |
+| Berita | `/berita` |
+| PPDB | `/ppdb` |
+| BKK (Bursa Kerja Khusus) | `/bkk` |
+| Mitra Kerja Sama | `/mitra` |
+| Lokasi & Kontak | `/kontak` |
+| Chatbot AI (Gemini) | widget kanan bawah di semua halaman |
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+> Catatan: alamat dasar `/` belum memiliki route. Buka langsung `http://localhost:8000/home`.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Kebutuhan Sistem
 
-## Learning Laravel
+- **PHP 8.3** atau lebih baru (ekstensi umum Laravel: `mbstring`, `openssl`, `pdo_sqlite`, `curl`, `fileinfo`, `xml`, `ctype`, `tokenizer`)
+- **Composer** 2.x
+- **Node.js & npm** (opsional, hanya untuk Vite/Tailwind bawaan Laravel; halaman website memakai file di `public/CSS` dan `public/JS`, jadi tidak wajib untuk menjalankan tampilan)
+- Koneksi internet (Bootstrap, Bootstrap Icons, dan Google Fonts dimuat lewat CDN)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Alternatif paling mudah di Windows: pakai [Laragon](https://laragon.org) atau XAMPP (PHP 8.3+) lalu install Composer.
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Cara Menjalankan
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
-
-## Agentic Development
-
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+### 1. Ambil proyek
 
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+git clone <url-repository-ini>
+cd Web-SmkInfokomBogor-IRI
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+Jika mengunduh ZIP, ekstrak lalu masuk ke folder hasil ekstrak lewat terminal.
 
-## Contributing
+### 2. Install dependency PHP
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```bash
+composer install
+```
 
-## Code of Conduct
+### 3. Siapkan file `.env`
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+# Linux / macOS / Git Bash
+cp .env.example .env
 
-## Security Vulnerabilities
+# Windows (CMD)
+copy .env.example .env
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Lalu buat kunci aplikasi:
 
-## License
+```bash
+php artisan key:generate
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### 4. Siapkan database
+
+Secara bawaan proyek memakai **SQLite** (`DB_CONNECTION=sqlite`), jadi tidak perlu install MySQL.
+
+```bash
+# Linux / macOS / Git Bash
+touch database/database.sqlite
+
+# Windows (CMD)
+type nul > database\database.sqlite
+
+php artisan migrate
+```
+
+Database dipakai untuk session, cache, dan antrean (queue) bawaan Laravel.
+
+### 5. (Opsional) Aktifkan Chatbot AI
+
+Chatbot memakai Google Gemini. Tanpa API key, website tetap berjalan normal, tetapi chatbot tidak akan bisa menjawab.
+
+1. Buat API key di [Google AI Studio](https://aistudio.google.com/apikey).
+2. Isi di file `.env`:
+
+```env
+GEMINI_API_KEY=isi_api_key_anda
+```
+
+Pengaturan lain (opsional): `GEMINI_MODEL`, `GEMINI_FALLBACK_MODELS`, `GEMINI_THINKING_LEVEL`, `GEMINI_TIMEOUT`. Nilai bawaannya ada di `config/services.php`.
+
+> Jangan pernah menaruh API key di file JavaScript atau commit file `.env` ke repository.
+
+Basis pengetahuan chatbot ada di `resources/chatbot/knowledge.md`.
+
+### 6. Jalankan server
+
+```bash
+php artisan serve
+```
+
+Buka di browser: **http://localhost:8000/home**
+
+### 7. (Opsional) Install dan build aset Vite
+
+```bash
+npm install
+npm run build
+```
+
+Untuk mode pengembangan dengan hot reload, jalankan `npm run dev` di terminal kedua.
+
+## Cara Cepat (satu perintah)
+
+Proyek menyediakan script Composer yang menjalankan langkah install, `.env`, `key:generate`, `migrate`, dan build aset sekaligus:
+
+```bash
+composer setup
+```
+
+Setelah itu cukup jalankan `php artisan serve`.
+
+## Mencoba Tampilan Mobile
+
+1. Buka halaman di Chrome / Edge, tekan **F12**.
+2. Klik ikon **Toggle device toolbar** (atau tekan `Ctrl + Shift + M`).
+3. Pilih perangkat (mis. iPhone SE 375px) atau atur lebar manual, lalu muat ulang halaman.
+
+Agar bisa dibuka dari HP di jaringan Wi-Fi yang sama:
+
+```bash
+php artisan serve --host=0.0.0.0 --port=8000
+```
+
+Lalu buka `http://<IP-komputer-anda>:8000/home` di HP.
+
+## Struktur Folder Penting
+
+```
+app/Http/Controllers/ChatbotController.php   Logika chatbot Gemini
+resources/views/layouts/app.blade.php        Layout utama (head, navbar, footer, chatbot)
+resources/views/components/                  Navbar, footer, chatbot
+resources/views/frontend/                    Halaman (home, profil, program, dst.)
+resources/chatbot/knowledge.md               Basis pengetahuan chatbot
+public/CSS/                                  CSS tiap halaman (style.css = CSS utama)
+public/JS/                                   JavaScript tiap halaman
+public/IMG/                                  Gambar dan ikon
+routes/web.php                               Daftar route
+config/services.php                          Konfigurasi Gemini
+```
+
+## Pemecahan Masalah
+
+| Masalah | Solusi |
+|---|---|
+| `could not find driver` | Aktifkan ekstensi `pdo_sqlite` di `php.ini`. |
+| `No application encryption key has been specified` | Jalankan `php artisan key:generate`. |
+| `Database file ... does not exist` | Buat file `database/database.sqlite` lalu `php artisan migrate`. |
+| Halaman `/` menampilkan 404 | Buka `/home`. |
+| Tampilan tidak berubah setelah edit CSS | Hard refresh (`Ctrl + F5`) atau jalankan `php artisan view:clear`. |
+| Chatbot tidak menjawab | Pastikan `GEMINI_API_KEY` sudah diisi, lalu `php artisan config:clear`. |
+| Tampilan tanpa gaya / ikon hilang | Periksa koneksi internet (Bootstrap & font dimuat dari CDN). |
+
+## Lisensi
+
+Dibangun di atas framework [Laravel](https://laravel.com), berlisensi [MIT](https://opensource.org/licenses/MIT).

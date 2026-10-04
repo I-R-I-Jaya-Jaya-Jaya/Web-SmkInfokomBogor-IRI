@@ -3390,3 +3390,333 @@ font: 400 13px / 1.7 var(--font-teks);
     transition-duration: 0.001ms !important;
   }
 }
+
+
+/* ==========================================================================
+   RESPONSIVE MOBILE (ditambahkan)
+   Semua aturan di bawah hanya aktif pada layar kecil (tablet / HP),
+   sehingga tampilan desktop tidak berubah.
+   ========================================================================== */
+
+/* Pengaman agar halaman tidak bisa digeser ke samping */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+body {
+  overflow-x: clip;
+}
+
+/* ---------- Tablet & di bawahnya (<= 1023px) ---------- */
+@media (max-width: 1023px) {
+  /* Tombol hamburger: header berwarna putih, jadi ikon harus gelap */
+  .menu-toggle {
+    color: var(--navy);
+    background: #ffffff;
+    border: 1px solid rgba(0, 33, 71, 0.25);
+    flex-shrink: 0;
+  }
+
+  .nav-container {
+    padding: 12px 20px;
+  }
+
+  /* Menu mobile: bisa discroll jika layar pendek */
+  .mobile-menu {
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+  }
+
+  /* Program keunggulan (home): 4 kolom -> 2 kolom */
+  .program-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Header program: tombol turun ke bawah teks */
+  .program-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Karakter / keunggulan */
+  .keunggulan-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Jalur kuliah & testimoni */
+  .jalur-container {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .testimoni-list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .jalur-title > div {
+    min-width: 0;
+  }
+
+  /* Kotak PPDB */
+  .ppdb-box {
+    padding: 44px 36px;
+  }
+}
+
+/* ---------- HP (<= 639px) ---------- */
+@media (max-width: 639px) {
+  /* ===== Top bar ===== */
+  .top-bar {
+    padding: 0;
+  }
+  .top-bar-inner {
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 16px;
+    text-align: center;
+  }
+  .top-bar-contact {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px 14px;
+  }
+  .top-bar-contact a,
+  .top-bar-contact span {
+    white-space: nowrap;
+  }
+  .top-bar-divider {
+    display: none;
+  }
+  .top-bar-ppdb {
+    white-space: nowrap;
+  }
+
+  /* ===== Navbar ===== */
+  .nav-container {
+    padding: 10px 16px;
+    gap: 10px;
+  }
+  .nav-logo {
+    gap: 10px;
+    min-width: 0;
+  }
+  .logo-title {
+    font-size: 16px;
+    white-space: nowrap;
+  }
+  .nav-actions {
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  .nav-actions .btn-daftar {
+    padding: 10px 14px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  /* ===== Hero ===== */
+  .hero-container {
+    padding: 72px 16px 110px;
+  }
+  .hero-badge {
+    font-size: 11px;
+    letter-spacing: 1px;
+    padding: 6px 12px;
+  }
+  .hero-title {
+    margin-top: 20px;
+    font-size: clamp(32px, 10vw, 42px);
+    line-height: 1.08;
+    overflow-wrap: break-word;
+  }
+  .hero-description {
+    margin-top: 18px;
+    font-size: 16px;
+    line-height: 1.65;
+  }
+  .hero-actions {
+    margin-top: 28px;
+  }
+  .hero-features {
+    margin-top: 32px;
+  }
+
+  /* ===== Statistik ===== */
+  .stats-container {
+    padding: 64px 16px;
+  }
+
+  /* ===== Jarak antar section ===== */
+  .section,
+  .program-section,
+  .karakter-section,
+  .keunggulan-section,
+  .jalur-kuliah,
+  .testimoni {
+    padding-block: 56px;
+  }
+  .ppdb-cta {
+    padding-bottom: 56px;
+  }
+
+  /* ===== Judul section ===== */
+  .section-title,
+  .program-heading h2,
+  .keunggulan-header h2,
+  .jalur-header h2,
+  .testimoni-header h2 {
+    font-size: 28px;
+    line-height: 1.25;
+  }
+  .program-description {
+    font-size: 15px;
+  }
+  .program-consult {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* ===== Grid ===== */
+  .program-grid {
+    grid-template-columns: minmax(0, 1fr);
+    margin-top: 32px;
+    gap: 20px;
+  }
+  .keunggulan-grid {
+    grid-template-columns: minmax(0, 1fr);
+    margin-top: 32px;
+  }
+  .keunggulan-card {
+    padding: 24px;
+  }
+  .jalur-container,
+  .testimoni-list {
+    margin-top: 32px;
+  }
+  .jalur-card {
+    padding: 22px 18px;
+  }
+  .jalur-title h3 {
+    font-size: 18px;
+  }
+  .testimoni-card {
+    padding: 22px;
+  }
+
+  /* ===== Kotak PPDB ===== */
+  .ppdb-box {
+    padding: 36px 22px;
+  }
+  .ppdb-content h2 {
+    font-size: 28px;
+    margin-top: 18px;
+    overflow-wrap: break-word;
+  }
+  .ppdb-description {
+    font-size: 16px;
+  }
+  .ppdb-buttons {
+    flex-direction: column;
+    align-items: stretch;
+    margin-top: 28px;
+  }
+  .ppdb-buttons .btn-daftarppdb,
+  .ppdb-buttons .btn-whatsapp {
+    justify-content: center;
+    padding: 14px 20px;
+  }
+  .download-brosur {
+    margin: 4px 0 0;
+  }
+  .ppdb-info {
+    flex-wrap: wrap;
+    gap: 12px 20px;
+  }
+
+  /* ===== Footer ===== */
+  .footer-grid {
+    gap: 32px;
+    padding-block: 48px;
+  }
+  .footer-bottom-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .footer-legal {
+    gap: 8px 20px;
+  }
+
+  /* Kutipan testimoni: hilangkan indent bawaan browser */
+  .testimoni-card blockquote {
+    margin-inline: 0;
+  }
+}
+
+/* ---------- HP kecil (<= 479px) ---------- */
+@media (max-width: 479px) {
+  .kampus-list {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+  }
+  .kampus-item {
+    padding: 12px;
+    gap: 12px;
+    min-width: 0;
+  }
+  .kampus-item img {
+    width: 40px;
+    height: 40px;
+  }
+  .kampus-item > div {
+    min-width: 0;
+  }
+  .kampus-full {
+    grid-column: auto;
+  }
+  .stats-number {
+    font-size: 34px;
+  }
+}
+
+/* ---------- HP sangat kecil (<= 359px) ---------- */
+@media (max-width: 359px) {
+  /* Tombol "Daftar" tersedia juga di dalam menu mobile */
+  .nav-actions .btn-daftar {
+    display: none;
+  }
+}
+
+/* Navbar HP kecil: logo & tombol dipadatkan supaya tidak saling menimpa */
+@media (max-width: 479px) {
+  .logo-title {
+    font-size: 15px;
+  }
+  .logo-subtitle {
+    font-size: 10px;
+  }
+  .logo-box {
+    width: 36px;
+    height: 36px;
+  }
+  .nav-actions .btn-daftar {
+    padding: 9px 12px;
+    font-size: 12px;
+  }
+}
+
+
+/* ==========================================================================
+   FIX IKON HAMBURGER (ditambahkan)
+   Sebelumnya ikon "X" ikut tampil di bawah ikon hamburger saat halaman
+   dibuka, karena class .is-hidden / .hidden pada <svg> belum punya aturan
+   CSS. Sekarang tampilan ikon mengikuti atribut aria-expanded tombol
+   (diubah oleh JS saat menu dibuka / ditutup), tanpa mengubah JS & Blade.
+   ========================================================================== */
+.menu-toggle #icon-close {
+  display: none;
+}
+.menu-toggle[aria-expanded="true"] #icon-open {
+  display: none;
+}
+.menu-toggle[aria-expanded="true"] #icon-close {
+  display: block;
+}

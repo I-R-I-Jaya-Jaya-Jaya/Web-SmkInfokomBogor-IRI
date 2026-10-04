@@ -838,3 +838,150 @@
   .mitra-logos { grid-template-columns: repeat(2, 1fr); }
   .program-hero-text h1 { font-size: 28px; }
 }   
+
+/* ==========================================================================
+   RESPONSIVE MOBILE (ditambahkan)
+   Hanya aktif pada layar kecil; tampilan desktop tidak berubah.
+   ========================================================================== */
+
+@media (max-width: 1000px) {
+  /* .cta-box memakai flex, jadi harus ditumpuk dengan flex-direction */
+  .cta-box {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 32px;
+    padding: 40px 32px;
+  }
+  .cta-left,
+  .cta-right {
+    flex: none;
+    width: 100%;
+    min-width: 0;
+  }
+  .cta-left h2 {
+    width: auto;
+  }
+  .program-hero-stats {
+    flex-wrap: wrap;
+    gap: 24px 32px;
+  }
+}
+
+@media (max-width: 600px) {
+  .program-hero {
+    padding-top: 48px;
+  }
+  .program-hero-text p {
+    font-size: 16px;
+  }
+  .program-hero-stats {
+    width: 100%;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .stat-item strong {
+    font-size: 28px;
+  }
+  .program-cta {
+    padding: 48px 0;
+  }
+  .cta-box {
+    padding: 32px 20px;
+    border-radius: 20px;
+  }
+  .cta-left h2 {
+    font-size: 28px;
+    line-height: 1.25;
+  }
+  .cta-left p {
+    font-size: 16px;
+  }
+  .cta-buttons {
+    flex-direction: column;
+  }
+  .cta-buttons .btn-primary,
+  .cta-buttons .btn-secondary {
+    width: 100%;
+  }
+  .cta-right {
+    padding: 22px 18px;
+  }
+}
+
+
+/* ==========================================================================
+   RESPONSIVE MOBILE - CTA & JUDUL (ditambahkan)
+   .cta-box memakai flex, sehingga aturan grid-template-columns di atas
+   tidak berpengaruh. Di layar kecil susunan dibuat vertikal.
+   ========================================================================== */
+@media (max-width: 1000px) {
+  .cta-box {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 32px;
+    padding: 40px 32px;
+  }
+
+  .cta-left h2 {
+    width: auto;
+  }
+
+  .cta-left,
+  .cta-right {
+    flex: none;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 639px) {
+  .program-hero {
+    padding-top: 48px;
+  }
+
+  .program-hero-text h1,
+  .cta-left h2 {
+    font-size: 28px;
+    overflow-wrap: break-word;
+  }
+
+  .program-hero-text p,
+  .cta-left p {
+    font-size: 16px;
+  }
+
+  .program-hero-stats {
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .stat-item strong {
+    font-size: 30px;
+  }
+
+  .program-cta {
+    padding: 56px 0;
+  }
+
+  /* Tabel perbandingan: tetap terbaca, bisa digeser ke samping */
+  .table-wrapper {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .komparasi-table {
+    min-width: 640px;
+  }
+
+  .cta-box {
+    padding: 32px 22px;
+    border-radius: 18px;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+  }
+
+  .cta-buttons .btn-primary,
+  .cta-buttons .btn-secondary {
+    width: 100%;
+  }
+}

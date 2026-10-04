@@ -1092,3 +1092,20 @@
         padding: 22px;
     }
 }
+
+/* ==========================================================================
+   RESPONSIVE MOBILE - HP kecil (ditambahkan)
+   Mencegah kartu syarat & biaya melebihi lebar layar pada HP 320px.
+   ========================================================================== */
+@media (max-width: 400px) {
+    .ppdb-syarat-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .ppdb-syarat-card,
+    .ppdb-biaya-card {
+        min-width: 0;
+        padding: 20px;
+        overflow-wrap: anywhere;
+    }
+}
