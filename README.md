@@ -64,14 +64,15 @@ php artisan key:generate
 
 ### 4. Siapkan database
 
-Secara bawaan proyek memakai **SQLite** (`DB_CONNECTION=sqlite`), jadi tidak perlu install MySQL.
+Secara bawaan proyek memakai **SQLite** (`DB_CONNECTION=sqlite`), jadi tidak perlu install MySQL, pada .env ubah menjadi seperti ini, sesuaikan pada bagian DB_DATABASE sesuai dengan database yang anda buat
 
 ```bash
-# Linux / macOS / Git Bash
-touch database/database.sqlite
-
-# Windows (CMD)
-type nul > database\database.sqlite
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laravel
+DB_USERNAME=root
+DB_PASSWORD=
 
 php artisan migrate
 ```
@@ -102,15 +103,6 @@ php artisan serve
 ```
 
 Buka di browser: **http://localhost:8000/home**
-
-### 7. (Opsional) Install dan build aset Vite
-
-```bash
-npm install
-npm run build
-```
-
-Untuk mode pengembangan dengan hot reload, jalankan `npm run dev` di terminal kedua.
 
 ## Cara Cepat (satu perintah)
 
@@ -162,6 +154,17 @@ config/services.php                          Konfigurasi Gemini
 | Tampilan tidak berubah setelah edit CSS | Hard refresh (`Ctrl + F5`) atau jalankan `php artisan view:clear`. |
 | Chatbot tidak menjawab | Pastikan `GEMINI_API_KEY` sudah diisi, lalu `php artisan config:clear`. |
 | Tampilan tanpa gaya / ikon hilang | Periksa koneksi internet (Bootstrap & font dimuat dari CDN). |
+
+
+## LAMPIRAN
+
+Berikut adalah tautan pendukung yang dapat diakses untuk keperluan verifikasi dan peninjauan lebih lanjut:
+1. Tautan GitHub (riwayat commit kerja sama):
+https://github.com/I-R-I-Jaya-Jaya-Jaya/Web-SmkInfokomBogor-IRI/commits/master/
+2. Tautan desain Figma:
+https://www.figma.com/design/MxJv1WBFqcLopopb7hON5G/Web-Sekolah
+3. Website lama SMK INFOKOM Kota Bogor:
+https://smkinfokom-bogor.sch.id/
 
 ## Lisensi
 
